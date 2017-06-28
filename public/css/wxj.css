@@ -9,6 +9,12 @@ body, html {
     font-family: "微软雅黑" !important;
     font-weight: bold;
     color: gray;
+    background-color: rgb(245, 245, 245);
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 ul li {

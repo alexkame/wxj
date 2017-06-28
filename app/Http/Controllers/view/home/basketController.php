@@ -5,10 +5,10 @@ namespace App\Http\Controllers\view\home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class indexController extends Controller
+class basketController extends Controller
 {
-    public function toIndex()
+    public function toBasket()
     {
-        return view('home.index');
+        return view('home.basket');
     }
 }

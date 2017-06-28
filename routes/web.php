@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'at/app', 'namespace' => 'view\home'], function () {
-    Route::get('/', 'indexController@index');
+    Route::get('/', 'indexController@toIndex');
+    Route::get('/basket', 'basketController@toBasket');
+    Route::get('/me', 'meController@toMe');
 });
