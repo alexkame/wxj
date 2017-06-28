@@ -6,7 +6,7 @@
 
 @section('js')
     <script type="text/javascript">
-        $("#a_basket").attr("href", "javascript:;");
-        $("#basket_img").attr("src", "/images/basket_active.png");
+        $("#a-basket").attr("href", "javascript:;");
+        $("#basket-img").attr("src", "/images/basket-active.png");
     </script>
     @endsection

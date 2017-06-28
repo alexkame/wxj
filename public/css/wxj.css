@@ -7,7 +7,7 @@ body, html {
     padding: 0;
     margin: 0;
     font-family: "微软雅黑" !important;
-    font-weight: bold;
+    font-weight: 500;
     color: gray;
     background-color: rgb(245, 245, 245);
 }
@@ -40,19 +40,146 @@ ul li {
 }
 
 header {
+    z-index: 9999;
     height: 60px;
     /*line-height: 60px;*/
     width: 100%;
-    color: #fff;
-    font-family: "黑体";
-    font-weight: 200;
-    font-size: 20px;
+    transition: background .5s;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     /*背景色渐变*/
     background: linear-gradient(to bottom right, #CC0033, #FF0033);
 }
 
-#content {
-    /*background: linear-gradient(to bottom right, #f5f454, #fbd1b7);*/
+header img {
+    width: 60px;
+}
+
+.hiddened {
+    background: rgba(0, 0, 0, .5)
+}
+
+.hshowed {
+    top: 0;
+    z-index: 9999;
+}
+
+#searcher {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+    line-height: 60px;
+}
+
+#searcher input {
+    height: 44px;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-family: 黑体;
+    padding-left: 10px;
+}
+
+#searcher input:focus {
+    border: 2px solid black
+}
+
+#searcher img {
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    top: 16px;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 240px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: green;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 240px;
+}
+
+.gcontainer {
+    width: 100%;
+    height: auto;
+    background: url(/images/hbg.jpg);
+    padding-bottom: 76px;
+}
+
+.frame { /*border:1px solid #CC0033;*/
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    text-align: center
+}
+
+.fcontainer {
+    /*border: 1px solid #f5f5f5;*/
+    border: none;
+    display: inline-block;
+    width: 90%;
+    height: auto;
+    margin: 10px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    box-shadow: #ddd 1px 1px 9px;
+    position: relative;
+}
+
+.fcontainer div {
+    position: relative;
+}
+
+.fcontainer div>p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .6);
+    color: #ffffff;
+    margin: 0;
+    padding: 10px;
+}
+
+.fcontainer img {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+}
+
+.fcontainer p {
+    text-align: left;
+    margin: 10px 5px;
+}
+
+.hot {
+    width:60px !important;
+    position: absolute;
+    top:0px;
+    right: 0px;
 }
 
 .menu {
@@ -60,28 +187,29 @@ header {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 70px;
+    height: 60px;
     color: #FFFFFF;
     padding-top: 10px;
     border-top: 1px solid #eee;
-    background-color: #CC0033;
+    background: #FF0033;
 }
 
 .subMenu {
-    width: 33%;
+    width: 25%;
     float: left;
     cursor: pointer;
 }
 
 .menu_name {
-    height: 30px;
+    height: 24px;
     width: 100%;
-    line-height: 30px;
+    line-height: 24px;
+    font-weight: 600 !important;
 }
 
 img.menu_img {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
 }
 
 img {

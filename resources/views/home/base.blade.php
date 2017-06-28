@@ -20,16 +20,20 @@
 @yield('content')
 <!--bottom-->
 <div id="menu" class="menu">
-    <a id="a_home" class="subMenu text-center" href="/at/app/">
-        <img id="home_img" class="menu_img" src="/images/home.png"/>
+    <a id="a-home" class="subMenu text-center" href="/at/app/">
+        <img id="home-img" class="menu_img" src="/images/home.png"/>
         <div class="menu_name">首页</div>
     </a>
-    <a id="a_basket" class="subMenu text-center" href="/at/app/basket">
-        <img id="basket_img" class="menu_img" src="/images/basket.png"/>
+    <a id="a-basket" class="subMenu text-center" href="/at/app/basket">
+        <img id="basket-img" class="menu_img" src="/images/basket.png"/>
         <div class="menu_name">购物篮</div>
     </a>
-    <a id="a_me" class="subMenu text-center" href="/at/app/me">
-        <img id="me_img" class="menu_img" src="/images/me.png"/>
+    <a id="a-boke" class="subMenu text-center" href="/at/app/boko">
+        <img id="boko-img" class="menu_img" src="/images/boko.png"/>
+        <div class="menu_name">我的业绩</div>
+    </a>
+    <a id="a-me" class="subMenu text-center" href="/at/app/me">
+        <img id="me-img" class="menu_img" src="/images/me.png"/>
         <div class="menu_name">个人中心</div>
     </a>
 </div>
