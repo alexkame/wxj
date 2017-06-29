@@ -6,7 +6,46 @@
 @endsection
 @section('css')
     <style>
+        ul {
+            padding: 0;
+            margin-bottom: 0;
+        }
 
+        ul li {
+            display: inline-block;
+            padding-bottom: 20px;
+            width: 30%;
+        }
+
+        .sort {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            color: black;
+        }
+        .sort ul li>img {
+            width:100px;height:100px;border-radius:50%;background-color: #FF0033;
+        }
+        .weui-flex {
+            padding-top: 20px;
+        }
+        .placeholder {
+            height: auto;
+            padding: 10px;
+            background: none;
+            color: black;
+            padding: 0px;
+        }
+        .placeholder img {
+            width:100px;height:100px;border-radius:50%;
+        }
+        .weui_btn {
+            display: inline-block;
+            color: #FF0033 !important;
+            border: 1px solid #FF0033;
+            margin: 10px;
+            font-size: inherit;
+        }
     </style>
 @endsection
 @section('content')
@@ -21,9 +60,9 @@
     <!-- 轮播 -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="/images/1.jpg"></div>
-            <div class="swiper-slide"><img src="/images/2.jpg"></div>
-            <div class="swiper-slide"><img src="/images/3.jpg"></div>
+            {{--<div class="swiper-slide"><img src="/images/b1.jpg"></div>--}}
+            <div class="swiper-slide"><img src="/images/b1.jpg"></div>
+            <div class="swiper-slide"><img src="/images/b2.jpg"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -42,37 +81,65 @@
         </div>
     </div>
     {{--结束--}}
+    {{--分类--}}
+    <div class="weui-flex">
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/huoyanjiu.jpg" /><br>
+                <span>火焰酒</span>
+            </div>
+        </div>
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/hongjiu.jpg" /><br>
+                <span>法国红酒</span>
+            </div>
+        </div>
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/putaojiu.jpg" /><br>
+                <span>葡萄酒</span>
+            </div>
+        </div>
+    </div>
+    <div class="sort">
+        <img style="width:160px; " src="/images/youxuantuijian.png" />
+    </div>
     <div class="gcontainer">
         <div class="frame">
             <div class="fcontainer">
                 <div style="position:relative;">
                     <img src="/images/g1.jpg">
                     <p>微小酒全场包邮微小酒全场包邮</p>
+                    <img class="hot" src="/images/hot.png">
                 </div>
-                <img class="hot" src="/images/hot.png">
-                <p>价格：￥888</p>
-                <p>月销量：99</p>
+                <p>心动五折</p>
+                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
             </div>
         </div>
         <div class="frame">
             <div class="fcontainer">
-                <img src="/images/g1.jpg">
-                <img class="hot" src="/images/push.png">
-                <p>1</p>
-                <p>价格：￥888</p>
-                <p>月销量：99</p>
+                <div style="position:relative;">
+                    <img src="/images/g1.jpg">
+                    <p>微小酒全场包邮微小酒全场包邮</p>
+                    <img class="hot" src="/images/jian.png">
+                </div>
+                <p>心动五折</p>
+                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
             </div>
         </div>
         <div class="frame">
             <div class="fcontainer">
-                <img src="/images/g1.jpg">
-                <p>微小酒全场包邮微小酒全场包邮</p>
-                <p>价格：￥888</p>
-                <p>月销量：99</p>
+                <div style="position:relative;">
+                    <img src="/images/g1.jpg">
+                    <p>微小酒全场包邮微小酒全场包邮</p>
+                    <img class="hot" src="/images/jiang.png">
+                </div>
+                <p>心动五折</p>
+                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('js')
@@ -95,7 +162,7 @@
             $(window).scroll(function () {
                 var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
                 console.log(scrollY);
-                if (scrollY > 200) { //如果滚动距离大于550px则隐藏，否则删除隐藏类
+                if (scrollY > 100) { //如果滚动距离大于550px则隐藏，否则删除隐藏类
                     $('#top-title').addClass('hiddened');
                 }
                 else {

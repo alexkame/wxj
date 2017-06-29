@@ -9,11 +9,11 @@ body, html {
     font-family: "微软雅黑" !important;
     font-weight: 500;
     color: gray;
+    background: url(/images/hbg.jpg);
     background-color: rgb(245, 245, 245);
 }
 
 a {
-    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -96,14 +96,14 @@ header img {
 }
 
 .swiper-container {
+    /*background: black;*/
     width: 100%;
-    height: 240px;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: green;
+    padding-top: 60px;
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -121,7 +121,6 @@ header img {
 
 .swiper-slide img {
     width: 100%;
-    height: 240px;
 }
 
 .gcontainer {
@@ -163,6 +162,7 @@ header img {
     color: #ffffff;
     margin: 0;
     padding: 10px;
+    text-align: left;
 }
 
 .fcontainer img {
@@ -171,8 +171,8 @@ header img {
 }
 
 .fcontainer p {
-    text-align: left;
     margin: 10px 5px;
+    color: #FF0033;
 }
 
 .hot {
@@ -192,6 +192,10 @@ header img {
     padding-top: 10px;
     border-top: 1px solid #eee;
     background: #FF0033;
+}
+
+.menu a {
+    color: #FFFFFF !important;
 }
 
 .subMenu {

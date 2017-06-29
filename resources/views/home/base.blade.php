@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/wxj.css"/>
-    {{--<link rel="stylesheet" href="/style/weui.css"/>--}}
-    {{--<link rel="stylesheet" href="/style/weui2.css"/>--}}
-    {{--<link rel="stylesheet" href="/style/weui3.css"/>--}}
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/weui2.css"/>
+    <link rel="stylesheet" href="/css/weui3.css"/>
     @yield('css-link')
 </head>
 @yield('css')
@@ -22,7 +22,7 @@
 <div id="menu" class="menu">
     <a id="a-home" class="subMenu text-center" href="/at/app/">
         <img id="home-img" class="menu_img" src="/images/home.png"/>
-        <div class="menu_name">首页</div>
+        <div class="menu_name">美酒推荐</div>
     </a>
     <a id="a-basket" class="subMenu text-center" href="/at/app/basket">
         <img id="basket-img" class="menu_img" src="/images/basket.png"/>
@@ -30,11 +30,11 @@
     </a>
     <a id="a-boke" class="subMenu text-center" href="/at/app/boko">
         <img id="boko-img" class="menu_img" src="/images/boko.png"/>
-        <div class="menu_name">我的业绩</div>
+        <div class="menu_name">账簿</div>
     </a>
     <a id="a-me" class="subMenu text-center" href="/at/app/me">
         <img id="me-img" class="menu_img" src="/images/me.png"/>
-        <div class="menu_name">个人中心</div>
+        <div class="menu_name">我的</div>
     </a>
 </div>
 </body>
