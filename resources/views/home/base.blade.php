@@ -21,14 +21,14 @@
 <!--bottom-->
 <div id="menu" class="menu">
     <a id="a-home" class="subMenu text-center" href="/at/app/">
-        <img id="home-img" class="menu_img" src="/images/home.png"/>
-        <div class="menu_name">美酒推荐</div>
+        <img id="home-img" class="menu_img" src="/images/wine.png"/>
+        <div class="menu_name">美酒专区</div>
     </a>
     <a id="a-basket" class="subMenu text-center" href="/at/app/basket">
         <img id="basket-img" class="menu_img" src="/images/basket.png"/>
         <div class="menu_name">购物篮</div>
     </a>
-    <a id="a-boke" class="subMenu text-center" href="/at/app/boko">
+    <a id="a-boko" class="subMenu text-center" href="/at/app/boko">
         <img id="boko-img" class="menu_img" src="/images/boko.png"/>
         <div class="menu_name">账簿</div>
     </a>

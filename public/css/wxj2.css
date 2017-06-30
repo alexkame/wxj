@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0 10px;
+    background: black !important;
+}
+
+.big {
+    height: 888px;
+    margin: 0 auto;
+    background: #FFFFFF;
+}

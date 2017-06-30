@@ -7,6 +7,7 @@
 @section('js')
     <script type="text/javascript">
         $("#a-me").attr("href", "javascript:;");
-        $("#me-img").attr("src", "/images/me-active.png");
+//        $("#me-img").attr("src", "/images/me-active.png");
+        $("#a-me").css("background", "black");
     </script>
 @endsection

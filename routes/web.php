@@ -20,4 +20,5 @@ Route::group(['prefix' => 'at/app', 'namespace' => 'view\home'], function () {
     Route::get('/basket', 'basketController@toBasket');
     Route::get('/boko', 'bokoController@toBoko');
     Route::get('/me', 'meController@toMe');
+    Route::get('/good/{id}', 'goodController@toGood');
 });

@@ -16,34 +16,40 @@
             padding-bottom: 20px;
             width: 30%;
         }
-
-        .sort {
-            width: 100%;
-            text-align: center;
-            padding: 10px 0;
-            color: black;
-        }
-        .sort ul li>img {
-            width:100px;height:100px;border-radius:50%;background-color: #FF0033;
-        }
         .weui-flex {
-            padding-top: 20px;
+            margin-top: 5px;
         }
+
+        .weui-flex-item:nth-child(2) {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
         .placeholder {
             height: auto;
             padding: 10px;
             background: none;
             color: black;
             padding: 0px;
+            line-height: 1.2em;
+            margin: 0;
         }
+
+        .placeholder p {
+            padding:3px 0;
+            color: #aaaaaa;
+        }
+
         .placeholder img {
-            width:100px;height:100px;border-radius:50%;
+            width: 100%;
+            /*height: 100px;*/
+            /*border-radius: 50%;*/
         }
         .weui_btn {
             display: inline-block;
             color: #FF0033 !important;
             border: 1px solid #FF0033;
-            margin: 10px;
+            /*margin: 10px;*/
             font-size: inherit;
         }
     </style>
@@ -86,59 +92,94 @@
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/huoyanjiu.jpg" /><br>
-                <span>火焰酒</span>
+                <p>火焰酒</p>
+                {{--火焰酒--}}
             </div>
         </div>
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/hongjiu.jpg" /><br>
-                <span>法国红酒</span>
+                <p>法国红酒</p>
+                {{--法国红酒--}}
             </div>
         </div>
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/putaojiu.jpg" /><br>
-                <span>葡萄酒</span>
+                <p>葡萄酒</p>
+                {{--葡萄酒--}}
             </div>
         </div>
     </div>
-    <div class="sort">
-        <img style="width:160px; " src="/images/youxuantuijian.png" />
+    <div class="weui-flex">
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/huoyanjiu.jpg" /><br>
+                <p>火焰酒</p>
+                {{--火焰酒--}}
+            </div>
+        </div>
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/hongjiu.jpg" /><br>
+                <p>法国红酒</p>
+                {{--法国红酒--}}
+            </div>
+        </div>
+        <div class="weui-flex-item">
+            <div class="placeholder">
+                <img src="/images/putaojiu.jpg" /><br>
+                <p>葡萄酒</p>
+                {{--葡萄酒--}}
+            </div>
+        </div>
+    </div>
+    {{--结束--}}
+    {{--新品推荐--}}
+    <div class="frame">
+        <img style="width:100%" src="/images/xinpintuijian.jpg" />
     </div>
     <div class="gcontainer">
-        <div class="frame">
-            <div class="fcontainer">
-                <div style="position:relative;">
-                    <img src="/images/g1.jpg">
-                    <p>微小酒全场包邮微小酒全场包邮</p>
-                    <img class="hot" src="/images/hot.png">
-                </div>
-                <p>心动五折</p>
-                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
+        <div class="fcontainer">
+            <div style="position:relative;">
+                <img src="/images/g2.jpg">
+                <p>微小酒全场包邮微小酒全场包邮</p>
+                <img class="hot" src="/images/hot.png">
             </div>
+            <p>心动五折</p>
+            <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
         </div>
-        <div class="frame">
-            <div class="fcontainer">
-                <div style="position:relative;">
-                    <img src="/images/g1.jpg">
-                    <p>微小酒全场包邮微小酒全场包邮</p>
-                    <img class="hot" src="/images/jian.png">
-                </div>
-                <p>心动五折</p>
-                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
+    </div>
+    {{--结束--}}
+    {{--优选推荐--}}
+    <div class="frame frame2">
+        <img style="width:160px; " src="/images/youxuantuijian.png" />
+    </div>
+    {{--结束--}}
+    <div class="gcontainer">
+        <div class="fcontainer">
+            <div style="position:relative;">
+                <img src="/images/g2.jpg">
+                <p>微小酒全场包邮微小酒全场包邮</p>
+                <img class="hot" src="/images/jiang.png">
             </div>
+            <p>心动五折</p>
+            <a href="/at/app/good/1" class="weui_btn bg-orange-b">查看宝贝</a>
         </div>
-        <div class="frame">
-            <div class="fcontainer">
-                <div style="position:relative;">
-                    <img src="/images/g1.jpg">
-                    <p>微小酒全场包邮微小酒全场包邮</p>
-                    <img class="hot" src="/images/jiang.png">
-                </div>
-                <p>心动五折</p>
-                <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
+        <div class="fcontainer">
+            <div style="position:relative;">
+                <img src="/images/g2.jpg">
+                <p>微小酒全场包邮微小酒全场包邮</p>
+                <img class="hot" src="/images/jian.png">
             </div>
+            <p>心动五折</p>
+            <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
         </div>
+
+    </div>
+    <div class="frame">
+        没有更多商品了<br>
+        敬请期待
     </div>
 @endsection
 
@@ -149,7 +190,8 @@
         $(document).ready(function(){
             //改变菜单图标
             $("#a-home").attr("href", "javascript:;");
-            $("#home-img").attr("src", "/images/home-active.png");
+            $("#a-home").css("background", "black");
+//            $("#home-img").attr("src", "/images/home-active.png");
             //实例化轮播
             var swiper = new Swiper('.swiper-container', {
                 pagination: '.swiper-pagination',
