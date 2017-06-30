@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/weui.css"/>
     <link rel="stylesheet" href="/css/weui2.css"/>
     <link rel="stylesheet" href="/css/weui3.css"/>
+    <script src="/js/jquery-1.11.2.min.js"></script>
     @yield('css-link')
 </head>
 @yield('css')
@@ -19,7 +20,6 @@
 <!--content-->
 @yield('content')
 </body>
-<script src="/js/jquery-1.11.2.min.js"></script>
 @yield('js')
 {{--<script type="text/javascript">--}}
     {{----}}

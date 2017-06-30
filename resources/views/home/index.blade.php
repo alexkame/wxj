@@ -33,11 +33,12 @@
             padding: 0px;
             line-height: 1.2em;
             margin: 0;
+            background: #FF0033;
         }
 
         .placeholder p {
             padding:3px 0;
-            color: #aaaaaa;
+            color: #FFFFFF;
         }
 
         .placeholder img {
@@ -111,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="weui-flex">
+    <div style="margin-bottom: 5px;" class="weui-flex">
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/huoyanjiu.jpg" /><br>
@@ -177,7 +178,7 @@
         </div>
 
     </div>
-    <div class="frame">
+    <div class="frame" style="padding: 25px 0 5px 0;">
         没有更多商品了<br>
         敬请期待
     </div>

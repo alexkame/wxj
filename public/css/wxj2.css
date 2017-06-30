@@ -3,13 +3,23 @@
     margin: 0;
 }
 
+ul li {
+    list-style: none;
+    text-decoration: none;
+}
+
 body {
-    margin: 0 10px;
-    background: black !important;
+    /*margin: 0 10px;*/
+    /*background: black !important;*/
+    /*font-weight: bold;*/
+    font-family: "黑体" !important;
+    /*background-color: #FFCC99 !important;*/
+    /*background: url("/images/hbg.jpg");*/
+    background-color: rgba(238, 218, 198, .6) !important;
 }
 
 .big {
-    height: 888px;
-    margin: 0 auto;
+    height: auto;
+    /*margin: 0 auto;*/
     background: #FFFFFF;
 }
