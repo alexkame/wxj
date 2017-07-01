@@ -15,10 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'at/app', 'namespace' => 'view\home'], function () {
+Route::group(['prefix' => 'at/m', 'namespace' => 'view\home'], function () {
     Route::get('/', 'indexController@toIndex');
+    Route::get('/hot', 'indexController@toHot');
+    Route::get('/cut', 'indexController@toCut');
+    Route::get('/promotion', 'indexController@toPromotion');
+    Route::get('/hot', 'indexController@toHot');
     Route::get('/basket', 'basketController@toBasket');
     Route::get('/boko', 'bokoController@toBoko');
     Route::get('/me', 'meController@toMe');
-    Route::get('/good/{id}', 'goodController@toGood');
+    Route::get('/goods/{id}', 'goodController@toGood');
 });

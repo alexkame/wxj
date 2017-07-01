@@ -5,6 +5,14 @@
     @endsection
 @section('css')
     <style type="text/css">
+        a {
+            display: block;
+            color: black;
+            text-decoration: none;
+        }
+        #top {
+            font-size: 0;
+        }
         #top img{
             width: 100%;
         }
@@ -53,6 +61,7 @@
             border-radius: 5px;
             height: auto;
             position: relative;
+            margin-bottom: 20px;
         }
         h4{
             line-height: 2em;
@@ -65,6 +74,13 @@
             position: absolute;
             bottom: 5px;
             right: 10px;
+            color: gray;
+        }
+        .weui_cell_ft img {
+            width: 16px;
+            position: relative;
+            top: 3px;
+            left: 3px;
         }
         .weui-number {
             height: 16px;
@@ -92,6 +108,12 @@
             font-size: 16px;
             margin-top: 2px;
         }
+        .btncontainer {
+            position: fixed;
+            /*position: absolute;*/
+            bottom: 0;
+            left: 0;
+        }
     </style>
     @endsection
 @section('content')
@@ -113,24 +135,55 @@
                 </ul>
             </div>
             <div id="right">
-                <div class="right-content">
+                <a class="right-content" href="/at/m/goods/1">
                     <div>
                         <h4>你的名字我的姓氏你的名字我的姓氏</h4>
                         <img src="/images/g2.jpg">
                         <h4>￥299</h4>
-                        <div style="font-size: 0px;" class="weui_cell_ft">
-                            <a class="weui-number weui-number-sub needsclick">-</a>
-                            <input pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1'
-                                   data-min="1" data-max="10" data-step="1">
-                            <a class="weui-number weui-number-plus needsclick">+</a>
-                        </div>
-                        <div class="weui_cell_ft" style="display: none;"> 0</div>
+                        <span class="weui_cell_ft">查看宝贝<img src="/images/jiantou.png"></span>
+                        {{--<div style="font-size: 0px;" class="weui_cell_ft">--}}
+                        {{--<a class="weui-number weui-number-sub needsclick">-</a>--}}
+                        {{--<input pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1'--}}
+                        {{--data-min="1" data-max="10" data-step="1">--}}
+                        {{--<a class="weui-number weui-number-plus needsclick">+</a>--}}
+                        {{----}}
+                        {{--</div>--}}
                     </div>
-                </div>
+                </a>
+                <a class="right-content" href="/at/m/goods/1">
+                    <div>
+                        <h4>你的名字我的姓</h4>
+                        <img src="/images/g2.jpg">
+                        <h4>￥299</h4>
+                        <span class="weui_cell_ft">查看宝贝<img src="/images/jiantou.png"></span>
+                        {{--<div style="font-size: 0px;" class="weui_cell_ft">--}}
+                        {{--<a class="weui-number weui-number-sub needsclick">-</a>--}}
+                        {{--<input pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1'--}}
+                        {{--data-min="1" data-max="10" data-step="1">--}}
+                        {{--<a class="weui-number weui-number-plus needsclick">+</a>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                </a>
+                <a class="right-content" href="/at/m/goods/1">
+                    <div>
+                        <h4>你的名字我的姓</h4>
+                        <img src="/images/g2.jpg">
+                        <h4>￥299</h4>
+                        <span class="weui_cell_ft">查看宝贝<img src="/images/jiantou.png"></span>
+                        {{--<div style="font-size: 0px;" class="weui_cell_ft">--}}
+                        {{--<a class="weui-number weui-number-sub needsclick">-</a>--}}
+                        {{--<input pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1'--}}
+                        {{--data-min="1" data-max="10" data-step="1">--}}
+                        {{--<a class="weui-number weui-number-plus needsclick">+</a>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-    @endsection
+        @endsection
 
 @section('js')
     <script type="text/javascript">

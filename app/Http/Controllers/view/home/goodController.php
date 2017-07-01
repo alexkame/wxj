@@ -9,6 +9,6 @@ class goodController extends Controller
 {
     public function toGood($id)
     {
-        return view('home.goods');
+        return view('home.buy');
     }
 }

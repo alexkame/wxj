@@ -108,7 +108,6 @@
             <div class="placeholder">
                 <img src="/images/putaojiu.jpg" /><br>
                 <p>葡萄酒</p>
-                {{--葡萄酒--}}
             </div>
         </div>
     </div>
@@ -117,21 +116,18 @@
             <div class="placeholder">
                 <img src="/images/huoyanjiu.jpg" /><br>
                 <p>火焰酒</p>
-                {{--火焰酒--}}
             </div>
         </div>
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/hongjiu.jpg" /><br>
                 <p>法国红酒</p>
-                {{--法国红酒--}}
             </div>
         </div>
         <div class="weui-flex-item">
             <div class="placeholder">
                 <img src="/images/putaojiu.jpg" /><br>
                 <p>葡萄酒</p>
-                {{--葡萄酒--}}
             </div>
         </div>
     </div>
@@ -148,7 +144,7 @@
                 <img class="hot" src="/images/hot.png">
             </div>
             <p>心动五折</p>
-            <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
+            <a href="/at/m/hot" class="weui_btn bg-orange-b">立刻前往</a>
         </div>
     </div>
     {{--结束--}}
@@ -165,7 +161,7 @@
                 <img class="hot" src="/images/jiang.png">
             </div>
             <p>心动五折</p>
-            <a href="/at/app/good/1" class="weui_btn bg-orange-b">查看宝贝</a>
+            <a href="/at/m/cut" class="weui_btn bg-orange-b">立刻前往</a>
         </div>
         <div class="fcontainer">
             <div style="position:relative;">
@@ -174,7 +170,7 @@
                 <img class="hot" src="/images/jian.png">
             </div>
             <p>心动五折</p>
-            <a href="javascript:;" class="weui_btn bg-orange-b">查看宝贝</a>
+            <a href="/at/m/promotion" class="weui_btn bg-orange-b">立刻前往</a>
         </div>
 
     </div>
@@ -201,7 +197,6 @@
             //启动跑马灯
             createMarquee();
             var winHeight = $(document).scrollTop();
-            console.log(winHeight);
             $(window).scroll(function () {
                 var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
                 console.log(scrollY);

@@ -11,4 +11,19 @@ class indexController extends Controller
     {
         return view('home.index');
     }
+
+    public function toHot()
+    {
+        return view('home.goods');
+    }
+
+    public function toCut()
+    {
+        return view('home.goods');
+    }
+
+    public function toPromotion()
+    {
+        return view('home.goods');
+    }
 }

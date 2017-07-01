@@ -158,6 +158,7 @@ header img {
     background-color: #FFFFFF;
     box-shadow: #ddd 1px 1px 9px;
     position: relative;
+    padding-bottom: 10px;
 }
 
 .fcontainer div {
