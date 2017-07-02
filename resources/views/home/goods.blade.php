@@ -64,8 +64,8 @@
             margin-bottom: 20px;
         }
         h4{
-            line-height: 2em;
-            margin-left: 5px;
+            line-height: 1.2em;
+            padding: 5px 0 5px 5px;
         }
         .right-content img {
             width: 100%;

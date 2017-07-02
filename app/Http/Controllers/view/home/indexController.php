@@ -22,7 +22,7 @@ class indexController extends Controller
         return view('home.goods');
     }
 
-    public function toPromotion()
+    public function toSale()
     {
         return view('home.goods');
     }

@@ -26,6 +26,7 @@
         }
 
         .placeholder {
+            position: relative;
             height: auto;
             padding: 10px;
             background: none;
@@ -88,71 +89,74 @@
         </div>
     </div>
     {{--结束--}}
-    {{--分类--}}
+    {{--热卖专区--}}
     <div class="weui-flex">
-        <div class="weui-flex-item">
+        <a class="weui-flex-item" href="/at/m/goods/1">
             <div class="placeholder">
                 <img src="/images/huoyanjiu.jpg" /><br>
+                <img class="hot" src="/images/hot.png">
                 <p>火焰酒</p>
                 {{--火焰酒--}}
             </div>
-        </div>
-        <div class="weui-flex-item">
+        </a>
+        <a class="weui-flex-item" href="/at/m/goods/1">
             <div class="placeholder">
                 <img src="/images/hongjiu.jpg" /><br>
+                <img class="hot" src="/images/hot.png">
                 <p>法国红酒</p>
                 {{--法国红酒--}}
             </div>
-        </div>
-        <div class="weui-flex-item">
+        </a>
+        <a class="weui-flex-item" href="/at/m/goods/1">
             <div class="placeholder">
                 <img src="/images/putaojiu.jpg" /><br>
+                <img class="hot" src="/images/hot.png">
                 <p>葡萄酒</p>
             </div>
-        </div>
-    </div>
-    <div style="margin-bottom: 5px;" class="weui-flex">
-        <div class="weui-flex-item">
-            <div class="placeholder">
-                <img src="/images/huoyanjiu.jpg" /><br>
-                <p>火焰酒</p>
-            </div>
-        </div>
-        <div class="weui-flex-item">
-            <div class="placeholder">
-                <img src="/images/hongjiu.jpg" /><br>
-                <p>法国红酒</p>
-            </div>
-        </div>
-        <div class="weui-flex-item">
-            <div class="placeholder">
-                <img src="/images/putaojiu.jpg" /><br>
-                <p>葡萄酒</p>
-            </div>
-        </div>
+        </a>
     </div>
     {{--结束--}}
     {{--新品推荐--}}
-    <div class="frame">
-        <img style="width:100%" src="/images/xinpintuijian.jpg" />
-    </div>
-    <div class="gcontainer">
-        <div class="fcontainer">
-            <div style="position:relative;">
-                <img src="/images/g2.jpg">
-                <p>微小酒全场包邮微小酒全场包邮</p>
-                <img class="hot" src="/images/hot.png">
-            </div>
-            <p>心动五折</p>
-            <a href="/at/m/hot" class="weui_btn bg-orange-b">立刻前往</a>
-        </div>
-    </div>
+    <a class="frame">
+        <img style="width:100%;padding-top: 5px;" src="/images/xinpintuijian.jpg" />
+    </a>
     {{--结束--}}
     {{--优选推荐--}}
     <div class="frame frame2">
-        <img style="width:160px; " src="/images/youxuantuijian.png" />
+        <img style="width:160px;padding-bottom: 5px;" src="/images/youxuantuijian.png" />
     </div>
     {{--结束--}}
+    {{--推荐专区--}}
+    <div style="margin-bottom: 5px;" class="weui-flex">
+        <a class="weui-flex-item" href="/at/m/goods/1">
+            <div class="placeholder">
+                <img src="/images/huoyanjiu.jpg" /><br>
+                <img class="hot" src="/images/jian.png">
+                <p>火焰酒</p>
+            </div>
+        </a>
+        <a class="weui-flex-item" href="/at/m/goods/1">
+            <div class="placeholder">
+                <img src="/images/hongjiu.jpg" /><br>
+                <img class="hot" src="/images/jian.png">
+                <p>法国红酒</p>
+            </div>
+        </a>
+        <a class="weui-flex-item" href="/at/m/goods/1">
+            <div class="placeholder">
+                <img src="/images/putaojiu.jpg" /><br>
+                <img class="hot" src="/images/jian.png">
+                <p>葡萄酒</p>
+            </div>
+        </a>
+    </div>
+    {{--结束--}}
+    {{--限时优惠--}}
+    <a class="frame">
+        <img style="width:100%" src="/images/xianshiyouhui.jpg" />
+    </a>
+    {{--结束--}}
+    {{--限时优惠--}}
     <div class="gcontainer">
         <div class="fcontainer">
             <div style="position:relative;">
@@ -170,10 +174,10 @@
                 <img class="hot" src="/images/jian.png">
             </div>
             <p>心动五折</p>
-            <a href="/at/m/promotion" class="weui_btn bg-orange-b">立刻前往</a>
+            <a href="/at/m/sale" class="weui_btn bg-orange-b">立刻前往</a>
         </div>
-
     </div>
+    {{--结束--}}
     <div class="frame" style="padding: 25px 0 5px 0;">
         没有更多商品了<br>
         敬请期待
@@ -199,7 +203,6 @@
             var winHeight = $(document).scrollTop();
             $(window).scroll(function () {
                 var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
-                console.log(scrollY);
                 if (scrollY > 100) { //如果滚动距离大于550px则隐藏，否则删除隐藏类
                     $('#top-title').addClass('hiddened');
                 }

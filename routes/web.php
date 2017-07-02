@@ -19,7 +19,7 @@ Route::group(['prefix' => 'at/m', 'namespace' => 'view\home'], function () {
     Route::get('/', 'indexController@toIndex');
     Route::get('/hot', 'indexController@toHot');
     Route::get('/cut', 'indexController@toCut');
-    Route::get('/promotion', 'indexController@toPromotion');
+    Route::get('/sale', 'indexController@toSale');
     Route::get('/hot', 'indexController@toHot');
     Route::get('/basket', 'basketController@toBasket');
     Route::get('/boko', 'bokoController@toBoko');

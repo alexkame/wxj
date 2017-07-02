@@ -129,6 +129,7 @@ header img {
 }
 
 .frame {
+    display: block;
     /*width: 95%;*/
     height: auto;
     /*padding: 10px 0;*/
@@ -187,7 +188,7 @@ header img {
 }
 
 .hot {
-    width:60px !important;
+    width: 2em !important;
     position: absolute;
     top:0px;
     right: 0px;
