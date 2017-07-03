@@ -39,6 +39,8 @@
 
         .placeholder p {
             padding:3px 0;
+            max-height: 44px;
+            overflow: hidden;
             color: #FFFFFF;
         }
 
@@ -91,29 +93,31 @@
     {{--结束--}}
     {{--热卖专区--}}
     <div class="weui-flex">
-        <a class="weui-flex-item" href="/at/m/goods/1">
+        @foreach($hots as $hot)
+        <a class="weui-flex-item" href="/at/m/goods/{{ $hot->id }}">
             <div class="placeholder">
-                <img src="/images/huoyanjiu.jpg" /><br>
+                <img src="{{ $hot->preview }}" /><br>
                 <img class="hot" src="/images/hot.png">
-                <p>火焰酒</p>
+                <p>{{ $hot->name }}</p>
                 {{--火焰酒--}}
             </div>
         </a>
-        <a class="weui-flex-item" href="/at/m/goods/1">
-            <div class="placeholder">
-                <img src="/images/hongjiu.jpg" /><br>
-                <img class="hot" src="/images/hot.png">
-                <p>法国红酒</p>
+        @endforeach
+        {{--<a class="weui-flex-item" href="/at/m/goods/1">--}}
+            {{--<div class="placeholder">--}}
+                {{--<img src="/images/hongjiu.jpg" /><br>--}}
+                {{--<img class="hot" src="/images/hot.png">--}}
+                {{--<p>法国红酒</p>--}}
                 {{--法国红酒--}}
-            </div>
-        </a>
-        <a class="weui-flex-item" href="/at/m/goods/1">
-            <div class="placeholder">
-                <img src="/images/putaojiu.jpg" /><br>
-                <img class="hot" src="/images/hot.png">
-                <p>葡萄酒</p>
-            </div>
-        </a>
+            {{--</div>--}}
+        {{--</a>--}}
+        {{--<a class="weui-flex-item" href="/at/m/goods/1">--}}
+            {{--<div class="placeholder">--}}
+                {{--<img src="/images/putaojiu.jpg" /><br>--}}
+                {{--<img class="hot" src="/images/hot.png">--}}
+                {{--<p>葡萄酒</p>--}}
+            {{--</div>--}}
+        {{--</a>--}}
     </div>
     {{--结束--}}
     {{--新品推荐--}}

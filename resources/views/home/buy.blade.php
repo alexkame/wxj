@@ -1,5 +1,5 @@
 @extends('home.base2')
-@section('title', "")
+@section('title', "$goods->name")
 @section('css-link')
     <link rel="stylesheet" href="/css/weui.css"/>
     <link rel="stylesheet" href="/css/weui2.css"/>
@@ -17,6 +17,22 @@
         }
         a {
             color: gray;
+        }
+        .toptips {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            text-align: center;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .toptips span {
+            background: #444444;
+            color: #ffffff;
+            padding: 15px 15px;
+            border-radius: 5px;
+            opacity: 0.9;
         }
         .container {
             /*margin: 10px;*/
@@ -37,12 +53,21 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            z-index: 9999;
         }
         .component-transparent {
             height: 220px;
         }
+        .component nav a {
+            overflow: auto;
+            line-height: 60px;
+        }
+        .component nav a::before {
+            font-size: 0;
+        }
         .component-transparent > ul {
-            width: 280px;
+            width: 90%;
+            z-index: 0;
         }
         .component {
             margin-bottom: 0;
@@ -137,11 +162,17 @@
             padding-bottom: 10px;
             width: 100%;
         }
+
+        .price {
+            color: orange;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
     </style>
     @endsection
 @section('content')
     <div class="container top_banner">
-        <img class="back" src="/images/fanhui.png"/>
+        <img class="back" src="/images/fanhui.png" onclick="javascript:history.go(-1);"/>
         <div class="custom-select" style="display: none">
             <select id="fxselect" name="fxselect">
                 <option value="-1" selected>选择一种效果...</option>
@@ -160,8 +191,8 @@
                 <li><img src="/images/13.png" alt="img12"/></li>
             </ul>
             <nav>
-                <a class="prev" href="#"></a>
-                <a class="next" href="#">Next item</a>
+                <a class="prev" href="#">上一张</a>
+                <a class="next" href="#">下一张</a>
             </nav>
         </div>
     </div>
@@ -170,18 +201,22 @@
             <img src="/images/fenxiangyoujiang.png"><br>
             分享有奖
         </a>
-        <div class="titel"><img src="/images/remai.png">奔富洛神山庄奔富洛神山庄奔富洛神山庄</div>
+        <div class="titel"><img src="/images/remai.png">{{ $goods->name }}</div>
         <div class="c2">
             <div>
                 <span>价格:</span>
-                <span style="color: orange;font-size: 1.4em;font-weight: bold">￥999</span>
-                <span style="text-decoration: line-through;">￥888</span>
+                <span class="price">￥{{ number_format($goods->price*$goods->attr->cut*0.1, 2, '.', '') }}</span>
+                @if ($goods->attr->cut == 10)
+                    {{--<span class="price">￥{{ $goods->price }}</span>--}}
+                    @else
+                        <span style="text-decoration: line-through;">￥{{ $goods->price }}</span>
+                    @endif
             </div>
         </div>
         <div class="c2">
             <div class="weui-flex">
                 <div class="weui-flex-item"><div class="placeholder">快递：免运费</div></div>
-                <div class="weui-flex-item"><div class="placeholder">总销量90笔</div></div>
+                <div class="weui-flex-item"><div class="placeholder">销量{{ $goods->sale->sales }}笔</div></div>
                 <div class="weui-flex-item">
                     <div class="placeholder">
                         <img style="width: 1.6em;padding-right: 2px;" src="/images/zhengping.png">质量保证
@@ -194,8 +229,8 @@
         <div class="weui_cell_bd weui_cell_primary clear-flex"><p>已选择：</p></div>
         <div style="font-size: 0px;" class="weui_cell_ft">
             <a class="weui-number weui-number-sub needsclick">-</a>
-            <input pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1' data-min="0" data-max="10"
-                   data-step="1">
+            <input id="num" pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1' data-min="0" data-max="10"
+                   data-step="1" readonly >
             <a class="weui-number weui-number-plus needsclick">+</a>
         </div>
         <div class="weui_cell_ft" style="display: none;"> 0</div>
@@ -237,7 +272,7 @@
     </div>
     <div class="buy-container">
         <div class="weui_btn_area weui_btn_area_inline">
-            <a href="javascript:;" class="weui_btn weui_btn_primary">加入购物车</a>
+            <a href="javascript:;" class="weui_btn weui_btn_primary" onclick="addCart({{ $goods->id }})">加入购物车</a>
             <a href="javascript:;" class="weui_btn weui_btn_primary">结算</a>
         </div>
     </div>
@@ -245,6 +280,38 @@
     <script src="/js/buy/classie.js"></script>
     <script src="/js/buy/main.js"></script>
     <script>
+        function addCart(id) {
+            $.ajax({
+                url: "/service/cart/add",
+                type: "get",
+                data: {id: id, num: $("#num").val()},
+                timeout: 3000,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.status);
+                    if (data.status != 0) {
+                        $(".toptips").show();
+                        $(".toptips span").html("服务器出小差了，请稍后再试");
+                        setTimeout(function () {
+                            $(".toptips").hide();
+                        }, 2000);
+                        return false;
+                    }
+                    if (data.status == 0) {
+                        $(".toptips").show();
+                        $(".toptips span").html(data.message);
+                        setTimeout(function () {
+                            $(".toptips").hide();
+                        }, 2000);
+                    }
+                },
+                error: function (xhr, status, error) {
+//                    console.log(xhr);
+//                    console.log(status);
+//                    console.log(error);
+                }
+            });
+        }
         function upDownOperation(element) {
             var _input = element.parent().find('input'),
                     _value = _input.val(),

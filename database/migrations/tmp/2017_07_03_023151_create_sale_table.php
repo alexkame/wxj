@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAttributeTable extends Migration
+class CreateSaleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::table('goods', function (Blueprint $table) {
-            $table->tinyInteger('attribute');
+        Schema::create('sale', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('goods_id');
+            $table->integer('sales');
+            $table->timestamps();
         });
     }
 
@@ -25,7 +28,7 @@ class AddAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::table('goods', function (Blueprint $table) {
+        Schema::table('sale', function (Blueprint $table) {
             //
         });
     }

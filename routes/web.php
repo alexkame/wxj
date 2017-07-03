@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'at/m', 'namespace' => 'view\home'], function () {
+Route::group(['prefix' => 'at/m', 'namespace' => 'View\home'], function () {
     Route::get('/', 'indexController@toIndex');
     Route::get('/hot', 'indexController@toHot');
     Route::get('/cut', 'indexController@toCut');
@@ -25,4 +25,9 @@ Route::group(['prefix' => 'at/m', 'namespace' => 'view\home'], function () {
     Route::get('/boko', 'bokoController@toBoko');
     Route::get('/me', 'meController@toMe');
     Route::get('/goods/{id}', 'goodController@toGood');
+});
+
+Route::group(['prefix' => 'service', 'namespace' => 'Services'], function () {
+    Route::get('/cart/add', 'cartController@add');
+    Route::get('/cart/remove', 'cartController@remove');
 });

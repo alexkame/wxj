@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\view\home;
+namespace App\Http\Controllers\View\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +13,6 @@ class basketController extends Controller
         if (Cart::isEmpty()) {
             return view('home.basket_blank');
         }
-        return view('home.basket');
+        return view('home.basket')->with('items', Cart::getContent());
     }
 }

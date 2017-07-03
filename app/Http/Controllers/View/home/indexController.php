@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\view\home;
+namespace App\Http\Controllers\View\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\model\Goods;
+use App\model\Attributes;
 
 class indexController extends Controller
 {
     public function toIndex()
     {
-        return view('home.index');
+        $hots = Attributes::where('attribute', 0)->leftjoin('goods', 'attributes.goods_id', '=', 'goods.id')->get();
+        return view('home.index')->with('hots', $hots);
     }
 
     public function toHot()

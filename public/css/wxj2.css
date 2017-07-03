@@ -9,12 +9,7 @@ ul li {
 }
 
 body {
-    /*margin: 0 10px;*/
-    /*background: black !important;*/
-    /*font-weight: bold;*/
     font-family: "黑体" !important;
-    /*background-color: #FFCC99 !important;*/
-    /*background: url("/images/hbg.jpg");*/
     background-color: rgba(238, 218, 198, .6) !important;
 }
 
