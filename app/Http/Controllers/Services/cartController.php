@@ -17,7 +17,7 @@ class cartController extends Controller
         $price = $goods->attr->cut * $goods->price * 0.1;
         Cart::add($goods->id, $goods->name, $price, $_GET['num'], array('origin_price' => $goods->price));
         $push->status = 0;
-        $push->message = "添加成功";
+        $push->message = "添加成功~我在购物车约定你咯";
         return $push->toJson();
     }
 

@@ -12,7 +12,9 @@ class indexController extends Controller
     public function toIndex()
     {
         $hots = Attributes::where('attribute', 0)->leftjoin('goods', 'attributes.goods_id', '=', 'goods.id')->get();
-        return view('home.index')->with('hots', $hots);
+        $sales = Attributes::where('attribute', 2)->leftjoin('goods', 'attributes.goods_id', '=', 'goods.id')->get();
+        return view('home.index')->with('hots', $hots)
+            ->with('sales', $sales);
     }
 
     public function toHot()

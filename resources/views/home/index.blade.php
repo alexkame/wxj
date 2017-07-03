@@ -103,21 +103,6 @@
             </div>
         </a>
         @endforeach
-        {{--<a class="weui-flex-item" href="/at/m/goods/1">--}}
-            {{--<div class="placeholder">--}}
-                {{--<img src="/images/hongjiu.jpg" /><br>--}}
-                {{--<img class="hot" src="/images/hot.png">--}}
-                {{--<p>法国红酒</p>--}}
-                {{--法国红酒--}}
-            {{--</div>--}}
-        {{--</a>--}}
-        {{--<a class="weui-flex-item" href="/at/m/goods/1">--}}
-            {{--<div class="placeholder">--}}
-                {{--<img src="/images/putaojiu.jpg" /><br>--}}
-                {{--<img class="hot" src="/images/hot.png">--}}
-                {{--<p>葡萄酒</p>--}}
-            {{--</div>--}}
-        {{--</a>--}}
     </div>
     {{--结束--}}
     {{--新品推荐--}}
@@ -132,27 +117,15 @@
     {{--结束--}}
     {{--推荐专区--}}
     <div style="margin-bottom: 5px;" class="weui-flex">
-        <a class="weui-flex-item" href="/at/m/goods/1">
-            <div class="placeholder">
-                <img src="/images/huoyanjiu.jpg" /><br>
-                <img class="hot" src="/images/jian.png">
-                <p>火焰酒</p>
-            </div>
-        </a>
-        <a class="weui-flex-item" href="/at/m/goods/1">
-            <div class="placeholder">
-                <img src="/images/hongjiu.jpg" /><br>
-                <img class="hot" src="/images/jian.png">
-                <p>法国红酒</p>
-            </div>
-        </a>
-        <a class="weui-flex-item" href="/at/m/goods/1">
-            <div class="placeholder">
-                <img src="/images/putaojiu.jpg" /><br>
-                <img class="hot" src="/images/jian.png">
-                <p>葡萄酒</p>
-            </div>
-        </a>
+        @foreach($sales as $sale)
+            <a class="weui-flex-item" href="/at/m/goods/{{ $sale->id }}">
+                <div class="placeholder">
+                    <img src="{{ $sale->preview }}"/><br>
+                    <img class="hot" src="/images/jian.png">
+                    <p>{{ $sale->name }}</p>
+                </div>
+            </a>
+        @endforeach
     </div>
     {{--结束--}}
     {{--限时优惠--}}

@@ -4,20 +4,22 @@
     <link rel="stylesheet" href="/css/weui.css"/>
     <link rel="stylesheet" href="/css/weui2.css"/>
     <link rel="stylesheet" href="/css/weui3.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/buy/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/buy/normalize.css"/>
     {{--<link rel="stylesheet" type="text/css" href="/css/buy/demo.css" />--}}
-    <link rel="stylesheet" type="text/css" href="/css/buy/component.css" />
-    <link rel="stylesheet" type="text/css" href="/css/buy/fxtransparent.css" />
+    <link rel="stylesheet" type="text/css" href="/css/buy/component.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/buy/fxtransparent.css"/>
     <script src="/js/buy/modernizr.custom.js"></script>
-    @endsection
+@endsection
 @section('css')
     <style type="text/css">
         body {
             background: url(/images/hbg.jpg);
         }
+
         a {
             color: gray;
         }
+
         .toptips {
             display: none;
             position: fixed;
@@ -34,18 +36,22 @@
             border-radius: 5px;
             opacity: 0.9;
         }
+
         .container {
             /*margin: 10px;*/
             height: 220px;
             background: #ffffff;
             border-bottom: 3px solid black;
         }
+
         img {
             width: 100%;
         }
+
         nav {
             display: block !important;
         }
+
         .back {
             width: 2em;
             height: 2em;
@@ -55,58 +61,71 @@
             left: 10px;
             z-index: 9999;
         }
+
         .component-transparent {
             height: 220px;
         }
+
         .component nav a {
             overflow: auto;
             line-height: 60px;
         }
+
         .component nav a::before {
             font-size: 0;
         }
+
         .component-transparent > ul {
             width: 90%;
             z-index: 0;
         }
+
         .component {
             margin-bottom: 0;
             padding-top: 40px;
         }
+
         .buy-container {
             position: fixed;
             bottom: 0;
             background: #ffffff;
             width: 100%;
         }
+
         .weui_btn_area.weui_btn_area_inline {
             margin: 10px;
         }
+
         .attribute-container {
             height: auto;
             position: relative;
         }
+
         .titel {
             /*border-bottom: 1px solid #eee;*/
             background: #ffffff;
             font-weight: bold;
             padding: 10px 60px 0 10px;
         }
+
         .attribute-container img {
             width: 30px;
-            padding-right: 5px;
+            /*padding-right: 5px;*/
             vertical-align: bottom;
         }
+
         .c2 {
             color: #8a8a8a;
             background: #ffffff;
             padding-left: 10px;
             line-height: 1.4em;
         }
+
         .c2 img {
             width: 20px;
             vertical-align: bottom;
         }
+
         .placeholder {
             border: none;
             background: none;
@@ -118,6 +137,7 @@
             font-size: 0.9em;
             padding: 10px 0 5px 0;
         }
+
         .share {
             position: absolute;
             top: 10px;
@@ -125,40 +145,50 @@
             font-size: 12px;
             text-align: center;
         }
+
         .share img {
             width: 32px;
         }
+
         .weui_cell {
             padding: 10px;
         }
+
         .weui_cell:before {
             left: 0;
         }
+
         .c3 {
             height: 1em;
             line-height: 1em;
             padding-right: 2em;
             color: gray;
         }
-        .c3 img{
+
+        .c3 img {
             vertical-align: bottom;
         }
+
         .weui_cell {
             background: #ffffff;
         }
+
         .weui-number-plus {
             margin-right: 0;
         }
+
         .clear-flex {
             flex: none;
             -webkit-flex: none;
             color: gray;
         }
+
         .detail-container {
             padding-bottom: 60px;
             padding-top: 10px;
         }
-        .detail-container img{
+
+        .detail-container img {
             padding-bottom: 10px;
             width: 100%;
         }
@@ -168,11 +198,18 @@
             font-size: 1.4em;
             font-weight: bold;
         }
+
+        .cut {
+            color: #ffffff;
+            padding: 0 5px;
+            background: purple;
+        }
     </style>
-    @endsection
+@endsection
 @section('content')
     <div class="container top_banner">
         <img class="back" src="/images/fanhui.png" onclick="javascript:history.go(-1);"/>
+
         <div class="custom-select" style="display: none">
             <select id="fxselect" name="fxselect">
                 <option value="-1" selected>选择一种效果...</option>
@@ -201,22 +238,37 @@
             <img src="/images/fenxiangyoujiang.png"><br>
             分享有奖
         </a>
-        <div class="titel"><img src="/images/remai.png">{{ $goods->name }}</div>
+
+        <div class="titel">
+            @if ($goods->attr->attribute == 0)
+                <img src="/images/remai.png">
+            @elseif ($goods->attr->attribute == 2)
+                <img src="/images/icon-sale.png">
+            @else
+                <img src="/images/icon-cut.png">
+            @endif
+                {{ $goods->name }}
+        </div>
         <div class="c2">
             <div>
                 <span>价格:</span>
                 <span class="price">￥{{ number_format($goods->price*$goods->attr->cut*0.1, 2, '.', '') }}</span>
                 @if ($goods->attr->cut == 10)
                     {{--<span class="price">￥{{ $goods->price }}</span>--}}
-                    @else
-                        <span style="text-decoration: line-through;">￥{{ $goods->price }}</span>
-                    @endif
+                @else
+                    <span style="text-decoration: line-through;">￥{{ $goods->price }}</span>
+                    <span class="cut">{{ $goods->attr->cut }}折</span>
+                @endif
             </div>
         </div>
         <div class="c2">
             <div class="weui-flex">
-                <div class="weui-flex-item"><div class="placeholder">快递：免运费</div></div>
-                <div class="weui-flex-item"><div class="placeholder">销量{{ $goods->sale->sales }}笔</div></div>
+                <div class="weui-flex-item">
+                    <div class="placeholder">快递：免运费</div>
+                </div>
+                <div class="weui-flex-item">
+                    <div class="placeholder">销量{{ $goods->sale->sales }}笔</div>
+                </div>
                 <div class="weui-flex-item">
                     <div class="placeholder">
                         <img style="width: 1.6em;padding-right: 2px;" src="/images/zhengping.png">质量保证
@@ -229,8 +281,9 @@
         <div class="weui_cell_bd weui_cell_primary clear-flex"><p>已选择：</p></div>
         <div style="font-size: 0px;" class="weui_cell_ft">
             <a class="weui-number weui-number-sub needsclick">-</a>
-            <input id="num" pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1' data-min="0" data-max="10"
-                   data-step="1" readonly >
+            <input id="num" pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1' data-min="0"
+                   data-max="10"
+                   data-step="1" readonly>
             <a class="weui-number weui-number-plus needsclick">+</a>
         </div>
         <div class="weui_cell_ft" style="display: none;"> 0</div>
@@ -268,6 +321,7 @@
     </div>
     <div class="detail-container">
         <img src="/images/chanpingxiangqing.png">
+
         <p><img src="/images/detail.jpg"></p>
     </div>
     <div class="buy-container">
@@ -353,4 +407,4 @@
             });
         });
     </script>
-    @endsection
+@endsection

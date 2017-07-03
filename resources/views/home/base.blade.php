@@ -20,7 +20,7 @@
     }
 </style>
 @yield('css')
-<body onload="initSize()" onresize="initSize()">
+<body>
 {{--<提示组件--}}
 <div class="toptips"><span></span></div>
 {{--加载组件--}}
@@ -49,10 +49,6 @@
 </body>
 @yield('js')
 <script type="text/javascript">
-    /*content高度*/
-    function initSize() {
-        var height = $(window).height() - $("header").height() - $("#description").height() - $("#menu").height();
-        $("#content").height(height + "px");
-    }
+
 </script>
 </html>
