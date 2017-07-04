@@ -1,9 +1,33 @@
-@extends('home.base')
+@extends('home.base2')
 @section('title', "购物篮")
 @section('css-link')
 @endsection
 @section('css')
     <style type="text/css">
+        body {
+            color: gray;
+            height: auto;
+            background: url(/images/hbg.jpg);
+            margin-bottom: 60px;
+        }
+
+        .toptips {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            text-align: center;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .toptips span {
+            background: #444444;
+            color: #ffffff;
+            padding: 15px 15px;
+            border-radius: 5px;
+            opacity: 0.9;
+        }
+
         .top-container {
             position: relative;
             margin: 10px;
@@ -11,7 +35,13 @@
         }
 
         .weui_cells {
-            margin-top: .3em;
+            margin-top: .5em;
+            border-top: 15px solid #FF0033;
+            border-radius: 10px;
+        }
+
+        .weui_cells:first-child {
+            margin-top: 0;
         }
 
         .weui_check_label {
@@ -75,10 +105,14 @@
             max-width: 200px;
         }
 
-        .fast-1 span:nth-child(2) {
+        .price {
             color: orange;
             font-weight: bolder;
             font-size: 1.3em;
+        }
+
+        .total {
+            font-size: 1em;
         }
 
         .btn-numbox {
@@ -201,32 +235,62 @@
         .weui-dialog__btn_primary {
             color: #0BB20C;
         }
+
+        .footer-container {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: #ffffff;
+            line-height: 50px;
+            height: 50px;
+            padding-left: 10px;
+        }
+
+        .footer-l, .footer-r {
+            display: inline-block;
+        }
+
+        .footer-r {
+            color: #ffffff;
+            font-weight: bold;
+            position: absolute;
+            height: 50px;
+            right: 0;
+            padding: 0 30px;
+            background: #FF0033;
+        }
+
+        a:active {
+            color: #ffffff;
+            background: black;
+        }
     </style>
-    @endsection
-    @section('content')
-            <!--BEGIN dialog1-->
+@endsection
+@section('content')
+    <!--BEGIN dialog1-->
     <div class="js_dialog" id="iosDialog1" style="display: none;">
         <div class="weui-mask"></div>
         <div class="weui-dialog">
-            <div class="weui-dialog__hd"><strong class="weui-dialog__title">提示</strong></div>
+            <div class="weui-dialog__hd">
+                {{--<strong class="weui-dialog__title">提示</strong>--}}
+                <img src="/images/guidi.jpg">
+            </div>
             <div class="weui-dialog__bd">您确定要删除吗?</div>
             <div class="weui-dialog__ft">
-                <div class="weui-dialog__btn weui-dialog__btn_default" onclick="hideDialog()">取消</div>
-                <div class="weui-dialog__btn weui-dialog__btn_primary" onclick="removeItem()">确认</div>
+                <div class="weui-dialog__btn weui-dialog__btn_default" onclick="removeItem()">是的</div>
+                <div class="weui-dialog__btn weui-dialog__btn_primary" onclick="hideDialog()">我再想想</div>
             </div>
         </div>
     </div>
     <!--END dialog1-->
     <div id="st">
-        <div class="top-container">
-
-        </div>
         @foreach($items as $item)
             <div class="weui_cells weui_cells_checkbox">
                 <div class="top-container">
                     <label class="weui_cell weui_check_label" for="{{ $item['id'] }}">
                         <div>
-                            <input type="checkbox" class="weui_check" name="item" id="{{ $item['id'] }}">
+                            <input type="checkbox" class="weui_check" name="item" value="1" id="{{ $item['id'] }}" onclick="selectItem(this, '{{ $item['id'] }}')">
                             <i class="weui_icon_checked">选择</i>
                         </div>
                     </label>
@@ -237,7 +301,8 @@
 
                     <div class="fast-1">
                         <p>{{ $item['name'] }}</p>
-                        <span>￥<span id="price_{{ $item['id'] }}">{{ number_format($item['price'], 2, '.', '') }}</span></span>
+                        <span class="price">￥<span
+                                    id="price_{{ $item['id'] }}">{{ number_format($item['price'], 2, '.', '') }}</span></span>
                         @if ($item['attributes']['origin_price'] == $item->price)
                         @else
                             <span style="text-decoration: line-through">￥{{ $item['attributes']['origin_price'] }}</span>
@@ -246,8 +311,9 @@
                 </div>
                 <div class="fast-container">
                     <div style="position: relative">
-                        <span class="fast-container-left">数量：<span id="num_{{ $item['id'] }}">{{ $item['quantity'] }}</span></span>
-                        小计：￥<span
+                        <span class="fast-container-left">数量：<span
+                                    id="num_{{ $item['id'] }}">{{ $item['quantity'] }}</span></span>
+                        小计：<span
                                 id="xiaoji_{{ $item['id'] }}">{{ number_format($item['price'] * $item['quantity'], 2, '.', '') }}</span>
                         <ul class="btn-numbox">
                             <ul class="count">
@@ -264,6 +330,15 @@
                 </div>
             </div>
         @endforeach
+        <div class="footer-container">
+            <div class="footer-l">
+                <span style="padding-right: 20px;">已选择：<span id="selected">0</span></span>
+                <span class="price total">合计：<span id="total">0</span></span>
+            </div>
+            <a class="footer-r" onclick="toCommit()">
+                前往结算
+            </a>
+        </div>
     </div>
 @endsection
 
@@ -271,11 +346,11 @@
     <script>
         var sid;
         $("#a-basket").attr("href", "javascript:;");
-        //        $("#basket-img").attr("src", "/images/basket-active.png");
+//        $("#basket-img").attr("src", "/images/basket-active.png");
         $("#a-basket").css("background", "black");
-
         function plus(id) {
             var input_num = document.getElementById("input-" + id);
+            var flat = $("#" + id).val();
             input_num.value = parseInt(input_num.value) + 1;
             $.ajax({
                 url: "/service/cart/add",
@@ -296,6 +371,15 @@
                         var new_count = parseFloat($("#xiaoji_" + id).html()) + parseFloat($("#price_" + id).html());
                         $("#xiaoji_" + id).html(returnFloat(new_count));
                         $("#num_" + id).html(input_num.value);
+                        if (flat == 1) {
+                            return;
+                        }
+                        if (flat == 0) {
+                            var tAll = parseFloat($("#total").html());
+                            var iPrice = parseFloat($("#price_" + id).html());
+                            var nAll = tAll + iPrice;
+                            $("#total").html(returnFloat(nAll));
+                        }
                     }
                 },
                 error: function (xhr, status, error) {
@@ -321,13 +405,50 @@
             }
         }
 
-
         function sub(id) {
             var input_num = document.getElementById("input-" + id);
-            if (input_num.value <= 0) {
-                input_num.value = 0;
+            var flat = $("#" + id).val();
+            if (input_num.value == 1) {
+//                input_num.value = 1;
+                return false;
             } else {
                 input_num.value = parseInt(input_num.value) - 1;
+                $.ajax({
+                    url: "/service/cart/inc",
+                    type: "get",
+                    data: {id: id, num: 1},
+                    timeout: 3000,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status != 0) {
+                            $(".toptips").show();
+                            $(".toptips span").html("服务器出小差了，请稍后再试");
+                            setTimeout(function () {
+                                $(".toptips").hide();
+                            }, 2000);
+                            return false;
+                        }
+                        if (data.status == 0) {
+                            var new_count = parseFloat($("#xiaoji_" + id).html()) - parseFloat($("#price_" + id).html());
+                            $("#xiaoji_" + id).html(returnFloat(new_count));
+                            $("#num_" + id).html(input_num.value);
+                            if (flat == 1) {
+                                return;
+                            }
+                            if (flat == 0) {
+                                var tAll = parseFloat($("#total").html());
+                                var iPrice = parseFloat($("#price_" + id).html());
+                                var nAll = tAll - iPrice;
+                                $("#total").html(returnFloat(nAll));
+                            }
+                        }
+                    },
+                    error: function (xhr, status, error) {
+//                    console.log(xhr);
+//                    console.log(status);
+//                    console.log(error);
+                    }
+                });
             }
         }
 
@@ -336,16 +457,7 @@
         }
 
         function showDialog(id) {
-//            if ($("input[name=item]:checked").length == 0) {
-//                $(".toptips").show();
-//                $(".toptips span").html("请先选择商品");
-//                setTimeout(function () {
-//                    $(".toptips").hide();
-//                }, 2000);
-//                return;
-//            }
             sid = id;
-            console.log(sid);
             $("#iosDialog1").css("display", "block");
         }
 
@@ -377,45 +489,37 @@
             });
         }
 
-        function upDownOperation(element) {
-            var _input = element.parent().find('input'),
-                    _value = _input.val(),
-                    _step = _input.attr('data-step') || 1;
-            //检测当前操作的元素是否有disabled，有则去除
-            element.hasClass('disabled') && element.removeClass('disabled');
-            //检测当前操作的元素是否是操作的添加按钮（.input-num-up）‘是’ 则为加操作，‘否’ 则为减操作
-            if (element.hasClass('weui-number-plus')) {
-                var _new_value = parseInt(parseFloat(_value) + parseFloat(_step)),
-                        _max = _input.attr('data-max') || false,
-                        _down = element.parent().find('.weui-number-sub');
-
-                //若执行‘加’操作且‘减’按钮存在class='disabled'的话，则移除‘减’操作按钮的class 'disabled'
-                _down.hasClass('disabled') && _down.removeClass('disabled');
-                if (_max && _new_value >= _max) {
-                    _new_value = _max;
-                    element.addClass('disabled');
-                }
-            } else {
-                var _new_value = parseInt(parseFloat(_value) - parseFloat(_step)),
-                        _min = _input.attr('data-min') || false,
-                        _up = element.parent().find('.weui-number-plus');
-                //若执行‘减’操作且‘加’按钮存在class='disabled'的话，则移除‘加’操作按钮的class 'disabled'
-                _up.hasClass('disabled') && _up.removeClass('disabled');
-                if (_min && _new_value <= _min) {
-                    _new_value = _min;
-                    element.addClass('disabled');
-                }
+        function selectItem(obj, id) {
+            var flat = $(obj).val();
+            var tSel = parseFloat($("#selected").html());
+            var tAll = parseFloat($("#total").html());
+            var tNum = parseFloat($("#xiaoji_" + id).html());
+            if (flat == 1) {
+                var nAll = tAll + tNum;
+                $("#total").html(returnFloat(nAll));
+                $("#selected").html(tSel + 1);
+                $(obj).val(0);
+                return;
             }
-            _input.val(_new_value);
+            if (flat == 0) {
+                var nAll = tAll - tNum;
+                $(obj).val(1);
+                $("#total").html(returnFloat(nAll));
+              $("#selected").html(tSel - 1);
+                return;
+            }
+
         }
 
-        $(function () {
-            $('.weui-number-plus').click(function () {
-                upDownOperation($(this));
-            });
-            $('.weui-number-sub').click(function () {
-                upDownOperation($(this));
-            });
-        });
+        function toCommit() {
+            if ($("input[name=item]:checked").length == 0) {
+                $(".toptips").show();
+                $(".toptips span").html("请先选择商品");
+                setTimeout(function () {
+                    $(".toptips").hide();
+                }, 2000);
+                return false;
+            }
+        }
     </script>
 @endsection

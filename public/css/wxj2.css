@@ -10,6 +10,7 @@ ul li {
 
 body {
     font-family: "黑体" !important;
+    background: url(/images/hbg.jpg);
     background-color: rgba(238, 218, 198, .6) !important;
 }
 

@@ -129,10 +129,8 @@ header img {
 
 .frame {
     display: block;
-    /*width: 95%;*/
+    margin-top: 5px;
     height: auto;
-    /*padding: 10px 0;*/
-    margin: 0 auto;
     text-align: center
 }
 

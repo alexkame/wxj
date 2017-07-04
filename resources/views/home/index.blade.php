@@ -40,8 +40,11 @@
         .placeholder p {
             padding:3px 0;
             max-height: 44px;
+            min-height: 44px;
             overflow: hidden;
             color: #FFFFFF;
+            font-size: 14px;
+            line-height: 1.4em;
         }
 
         .placeholder img {
@@ -107,7 +110,7 @@
     {{--结束--}}
     {{--新品推荐--}}
     <a class="frame">
-        <img style="width:100%;padding-top: 5px;" src="/images/xinpintuijian.jpg" />
+        <img style="width:100%;vertical-align: bottom;" src="/images/xinpintuijian.jpg" />
     </a>
     {{--结束--}}
     {{--优选推荐--}}
@@ -165,7 +168,7 @@
     <script type="text/javascript" src="/js/swiper.jquery.min.js"></script>
     <script type="text/javascript" src="/js/marquee.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             //改变菜单图标
             $("#a-home").attr("href", "javascript:;");
             $("#a-home").css("background", "black");
@@ -173,7 +176,8 @@
             //实例化轮播
             var swiper = new Swiper('.swiper-container', {
                 pagination: '.swiper-pagination',
-                paginationClickable: true
+                paginationClickable: true,
+                autoplay: 3000
             });
             //启动跑马灯
             createMarquee();

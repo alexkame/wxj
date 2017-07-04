@@ -1,9 +1,9 @@
 @extends('home.base2')
 @section('title', "$goods->name")
 @section('css-link')
-    <link rel="stylesheet" href="/css/weui.css"/>
-    <link rel="stylesheet" href="/css/weui2.css"/>
-    <link rel="stylesheet" href="/css/weui3.css"/>
+    {{--<link rel="stylesheet" href="/css/weui.css"/>--}}
+    {{--<link rel="stylesheet" href="/css/weui2.css"/>--}}
+    {{--<link rel="stylesheet" href="/css/weui3.css"/>--}}
     <link rel="stylesheet" type="text/css" href="/css/buy/normalize.css"/>
     {{--<link rel="stylesheet" type="text/css" href="/css/buy/demo.css" />--}}
     <link rel="stylesheet" type="text/css" href="/css/buy/component.css"/>
@@ -18,6 +18,11 @@
 
         a {
             color: gray;
+        }
+
+        a:active {
+            color: #ffffff;
+            background: black;
         }
 
         .toptips {
@@ -90,6 +95,7 @@
             bottom: 0;
             background: #ffffff;
             width: 100%;
+            height: 51px;
         }
 
         .weui_btn_area.weui_btn_area_inline {
@@ -203,6 +209,34 @@
             color: #ffffff;
             padding: 0 5px;
             background: purple;
+        }
+        .buy-1 {
+            padding: 5px 5px 0 5px;
+            display: inline-block;
+            text-align: center;
+        }
+        .buy-1 img {
+            vertical-align: bottom;
+            width: 1.6em;
+        }
+        .buy-1 p {
+            font-size: .6em;
+        }
+        .buy-1:first-child {
+            margin-left: 10px;
+            /*padding-right: 0;*/
+        }
+        .buy-container .buy-2 {
+            display: inline-block;
+            float: right;
+            height: inherit;
+            line-height: 51px;
+            padding: 0 12px;
+            color: #ffffff;
+            background-color: #FF0033;
+        }
+        .buy-2-1 {
+            background: orange !important;
         }
     </style>
 @endsection
@@ -325,10 +359,14 @@
         <p><img src="/images/detail.jpg"></p>
     </div>
     <div class="buy-container">
-        <div class="weui_btn_area weui_btn_area_inline">
-            <a href="javascript:;" class="weui_btn weui_btn_primary" onclick="addCart({{ $goods->id }})">加入购物车</a>
-            <a href="javascript:;" class="weui_btn weui_btn_primary">结算</a>
-        </div>
+        {{--<div class="weui_btn_area weui_btn_area_inline">--}}
+            {{--<a href="javascript:;" class="weui_btn weui_btn_primary" onclick="addCart({{ $goods->id }})">加入购物车</a>--}}
+            {{--<a href="javascript:;" class="weui_btn weui_btn_primary">结算</a>--}}
+        {{--</div>--}}
+        <a class="buy-1" href="/at/m"><img src="/images/icon-home.png"><p>进  店</p></a>
+        <a class="buy-1" href="/at/m/basket"><img src="/images/icon-cart.png"><p>购物车</p></a>
+        <a class="buy-2">立即购买</a>
+        <a class="buy-2 buy-2-1" onclick="addCart({{ $goods->id }})">加入购物车</a>
     </div>
     <!-- /container -->
     <script src="/js/buy/classie.js"></script>

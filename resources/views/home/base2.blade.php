@@ -9,6 +9,9 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/wxj2.css"/>
     <script src="/js/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="/css/weui.css"/>
+    <link rel="stylesheet" href="/css/weui2.css"/>
+    <link rel="stylesheet" href="/css/weui3.css"/>
     @yield('css-link')
 </head>
 <style type="text/css">
