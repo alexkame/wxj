@@ -245,11 +245,11 @@
             background: #ffffff;
             line-height: 50px;
             height: 50px;
-            padding-left: 10px;
         }
 
         .footer-l, .footer-r {
             display: inline-block;
+            margin-left: 10px;
         }
 
         .footer-r {
@@ -261,10 +261,31 @@
             padding: 0 30px;
             background: #FF0033;
         }
-
+        a {
+            display: inline-block;
+        }
         a:active {
             color: #ffffff;
             background: black;
+        }
+        #st {
+            margin-top: 50px;
+        }
+        .top-bar {
+            position: fixed;
+            background: #ffffff;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 0 6px #ddd;
+            z-index: 9999;
+        }
+        .top-bar img {
+            width: 2em;
+            vertical-align: bottom;
+            padding: 5px;
+        }
+        .top-bar a {
+            line-height: 42px;
         }
     </style>
 @endsection
@@ -285,6 +306,9 @@
         </div>
     </div>
     <!--END dialog1-->
+    <div class="top-bar">
+        <a href="/at/m"><img src="/images/icon-home.png">返回店铺</a>
+    </div>
     <div id="st">
         @foreach($items as $item)
             <div class="weui_cells weui_cells_checkbox">
@@ -438,8 +462,8 @@
                             }
                             if (flat == 0) {
                                 var tAll = parseFloat($("#total").html());
-                                var iPrice = parseFloat($("#price_" + id).html());
-                                var nAll = tAll - iPrice;
+                                var tPrice = parseFloat($("#price_" + id).html());
+                                var nAll = tAll - tPrice;
                                 $("#total").html(returnFloat(nAll));
                             }
                         }
@@ -521,6 +545,7 @@
                 }, 2000);
                 return false;
             }
+            location.href = '/at/m/commit';
         }
     </script>
 @endsection

@@ -9,6 +9,6 @@ class orderController extends Controller
 {
     public function toCommit()
     {
-
+        return view('home.commit');
     }
 }
