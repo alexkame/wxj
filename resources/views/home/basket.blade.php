@@ -38,6 +38,7 @@
             margin-top: .5em;
             border-top: 15px solid #FF0033;
             border-radius: 10px;
+            box-shadow: 2px 2px 8px #ddd;
         }
 
         .weui_cells:first-child {
@@ -311,7 +312,7 @@
                 </div>
                 <div class="fast-container">
                     <div style="position: relative">
-                        <span class="fast-container-left">数量：<span
+                        <span class="fast-container-left">件数：<span
                                     id="num_{{ $item['id'] }}">{{ $item['quantity'] }}</span></span>
                         小计：<span
                                 id="xiaoji_{{ $item['id'] }}">{{ number_format($item['price'] * $item['quantity'], 2, '.', '') }}</span>
@@ -332,7 +333,7 @@
         @endforeach
         <div class="footer-container">
             <div class="footer-l">
-                <span style="padding-right: 20px;">已选择：<span id="selected">0</span></span>
+                <span style="padding-right: 20px;">已选中：<span id="selected">0</span></span>
                 <span class="price total">合计：<span id="total">0</span></span>
             </div>
             <a class="footer-r" onclick="toCommit()">

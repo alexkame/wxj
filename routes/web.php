@@ -17,14 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'at/m', 'namespace' => 'View\home'], function () {
     Route::get('/', 'indexController@toIndex');
-    Route::get('/hot', 'indexController@toHot');
-    Route::get('/cut', 'indexController@toCut');
-    Route::get('/sale', 'indexController@toSale');
-    Route::get('/hot', 'indexController@toHot');
     Route::get('/basket', 'basketController@toBasket');
     Route::get('/boko', 'bokoController@toBoko');
     Route::get('/me', 'meController@toMe');
     Route::get('/goods/{id}', 'goodController@toGood');
+    Route::get('/commit', 'orderController@toCommit');
 });
 
 Route::group(['prefix' => 'service', 'namespace' => 'Services'], function () {

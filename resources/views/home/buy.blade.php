@@ -214,6 +214,7 @@
             padding: 5px 5px 0 5px;
             display: inline-block;
             text-align: center;
+            margin-left: 10px;
         }
         .buy-1 img {
             vertical-align: bottom;
@@ -221,10 +222,6 @@
         }
         .buy-1 p {
             font-size: .6em;
-        }
-        .buy-1:first-child {
-            margin-left: 10px;
-            /*padding-right: 0;*/
         }
         .buy-container .buy-2 {
             display: inline-block;
@@ -237,6 +234,9 @@
         }
         .buy-2-1 {
             background: orange !important;
+        }
+        .weui-number-input {
+            font-size: 18px;
         }
     </style>
 @endsection
@@ -312,7 +312,7 @@
         </div>
     </div>
     <div class="weui_cell">
-        <div class="weui_cell_bd weui_cell_primary clear-flex"><p>已选择：</p></div>
+        <div class="weui_cell_bd weui_cell_primary clear-flex"><p>件数：</p></div>
         <div style="font-size: 0px;" class="weui_cell_ft">
             <a class="weui-number weui-number-sub needsclick">-</a>
             <input id="num" pattern="[0-9]*" class="weui-number-input" style="width: 50px;" value='1' data-min="0"
@@ -364,7 +364,7 @@
             {{--<a href="javascript:;" class="weui_btn weui_btn_primary">结算</a>--}}
         {{--</div>--}}
         <a class="buy-1" href="/at/m"><img src="/images/icon-home.png"><p>进  店</p></a>
-        <a class="buy-1" href="/at/m/basket"><img src="/images/icon-cart.png"><p>购物车</p></a>
+        <a class="buy-1" href="/at/m/basket"><img id="cart" src="/images/icon-cart.png"><p>购物车</p></a>
         <a class="buy-2">立即购买</a>
         <a class="buy-2 buy-2-1" onclick="addCart({{ $goods->id }})">加入购物车</a>
     </div>
@@ -395,6 +395,7 @@
                         setTimeout(function () {
                             $(".toptips").hide();
                         }, 2000);
+                        $("#cart").attr("src", "/images/icon-cart-smile.png");
                     }
                 },
                 error: function (xhr, status, error) {
