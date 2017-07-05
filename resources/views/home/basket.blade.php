@@ -545,7 +545,11 @@
                 }, 2000);
                 return false;
             }
-            location.href = '/at/m/commit';
+            var ids = new Array();
+            $("input[name=item]:checked").each(function () {
+                ids.push($(this).attr("id"));
+            });
+            location.href = '/at/m/commit?ids=' + ids;
         }
     </script>
 @endsection

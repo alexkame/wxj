@@ -108,6 +108,7 @@
         padding: 0 3px;
     }
     .explain {
+        color: gray;
         font-size: .8em;
     }
     .input-leave {
@@ -166,9 +167,9 @@
     }
     .last-container {
         font-size: .9em;
-        margin-top: 10px;
+        margin-top: 5px;
         background: #ffffff;
-        padding: 5px 5px 0 5px;
+        padding: 0 5px 0 5px;
     }
     .last-container-total {
         position: absolute;
@@ -185,6 +186,14 @@
     .weui_btn {
         display: inline-block;
         width: 80%;
+    }
+    .item-p {
+        position: absolute;
+        bottom: 10px;
+        color: gray;
+    }
+    .item-p span {
+        padding-right: 10px;
     }
 </style>
     @endsection
@@ -203,33 +212,35 @@
         <img class="datouzhen" src="/images/datouzhen.png">
     </div>
     <div class="container">
+        @foreach($items as $item)
         <div class="contents">
             <div style="flex: 1 0 0">
-                <img src="/images/huoyanjiu.jpg">
+                <img src="{{ $item['attributes']['preview'] }}">
             </div>
             <div style="flex: 3 0 0; margin-left: 5px;">
-                <p>黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄干红干红酒红酒礼盒木盒装750ml*2</p>
-                <p>数量：99</p>
+                <p>{{ $item['name'] }}</p>
+                <p class="item-p">价格：<span style="color: orange">{{ number_format($item['price'], 2, '.', '')}}</span><span>数量：{{ $item['quantity'] }}</span></p>
             </div>
         </div>
-        <div class="contents">
-            <div style="flex: 1 0 0">
-                <img src="/images/huoyanjiu.jpg">
-            </div>
-            <div style="flex: 3 0 0; margin-left: 5px;">
-                <p>黎明骑士2009干红葡萄酒红酒礼盒木盒装750ml*2</p>
-                <p>数量：99</p>
-            </div>
-        </div>
-        <div class="contents">
-            <div style="flex: 1 0 0">
-                <img src="/images/huoyanjiu.jpg">
-            </div>
-            <div style="flex: 3 0 0; margin-left: 5px;">
-                <p>黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄酒红酒礼盒木盒装750ml*2</p>
-                <p>数量：99</p>
-            </div>
-        </div>
+        @endforeach
+        {{--<div class="contents">--}}
+            {{--<div style="flex: 1 0 0">--}}
+                {{--<img src="/images/huoyanjiu.jpg">--}}
+            {{--</div>--}}
+            {{--<div style="flex: 3 0 0; margin-left: 5px;">--}}
+                {{--<p>黎明骑士2009干红葡萄酒红酒礼盒木盒装750ml*2</p>--}}
+                {{--<p>数量：99</p>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="contents">--}}
+            {{--<div style="flex: 1 0 0">--}}
+                {{--<img src="/images/huoyanjiu.jpg">--}}
+            {{--</div>--}}
+            {{--<div style="flex: 3 0 0; margin-left: 5px;">--}}
+                {{--<p>黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄酒红酒礼盒木盒装750ml*2</p>--}}
+                {{--<p>数量：99</p>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 
     <div class="container">
@@ -249,13 +260,6 @@
             <p>详细地址：黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄干红干红酒红酒礼盒木盒装750ml</p>
         </div>
     </div>
-    <div class="container">
-        <a class="show-title benefit-container" onclick="selectBenefitCard()">
-            <img src="/images/icon-youhui.png">
-            <img src="/images/jiantou2.png">
-            使用优惠
-        </a>
-    </div>
     <div class="container container-line">
         <div class="show-title">
             <img src="/images/icon-pay-online.png" style="width: 2em;vertical-align: middle;">支付方式
@@ -269,10 +273,17 @@
         <div class="explain">公司指定快递，少数偏远地区以及村，可能出现快件自提现象，敬请谅解。快递物流有效期一个月，请在发货后7天内查询物流信息。</div>
     </div>
     <div class="container">
+        <a class="show-title benefit-container" onclick="selectBenefitCard()">
+            <img src="/images/icon-youhui.png">
+            <img src="/images/jiantou2.png">
+            使用优惠
+        </a>
+    </div>
+    <div class="container">
         <div class="last-container">
             <p>优惠金额：￥20</p>
             <p>运费：包邮</p>
-            <p class="last-container-total"><span style="font-weight: bold">需付：</span><span style="font-size: 2em;color: orange">￥999.00</span></p>
+            <p class="last-container-total"><span style="font-weight: bold">需付：</span><span style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
         </div>
     </div>
     <div class="container pay-btn-container">

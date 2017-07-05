@@ -15,7 +15,7 @@ class cartController extends Controller
         $push = new Pusher();
         $goods = Goods::find($_GET['id']);
         $price = $goods->attr->cut * $goods->price * 0.1;
-        Cart::add($goods->id, $goods->name, $price, $_GET['num'], array('origin_price' => $goods->price));
+        Cart::add($goods->id, $goods->name, $price, $_GET['num'], array('origin_price' => $goods->price, 'preview' => $goods->preview));
         $push->status = 0;
         $push->message = "添加成功~我在购物车约定你";
         return $push->toJson();
