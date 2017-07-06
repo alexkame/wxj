@@ -3,12 +3,12 @@ body,html {
 	height:100%;
 	-webkit-tap-highlight-color:transparent
 }a {
-  color: #18b4ed;
+  color: #6F599C;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 a:active {
-  color: #18b4ed;
+  color: #6F599C;
 }
 ::-webkit-input-placeholder {
   color: #CCCCCC; }

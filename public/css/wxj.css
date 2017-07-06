@@ -53,7 +53,7 @@ header {
     top: 0;
     left: 0;
     /*背景色渐变*/
-    background: linear-gradient(to bottom right, #CC0033, #FF0033);
+    background: linear-gradient(to bottom right, #6F599C, #B48BAA);
 }
 
 header img {
@@ -181,7 +181,7 @@ header img {
 
 .fcontainer p {
     margin: 10px 5px;
-    color: #FF0033;
+    color: #6F599C;
 }
 
 .hot {
@@ -200,7 +200,7 @@ header img {
     color: #FFFFFF;
     /*padding-top: 10px;*/
     border-top: 1px solid #eee;
-    background: #FF0033;
+    background: #6F599C;
     z-index: 99999;
 }
 
@@ -218,7 +218,8 @@ header img {
     height: 24px;
     width: 100%;
     line-height: 24px;
-    font-weight: 600 !important;
+    font-size: .8em;
+    /*font-weight: 600 !important;*/
 }
 
 img.menu_img {

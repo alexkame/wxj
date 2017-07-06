@@ -87,7 +87,7 @@
             <div class="container">
                 <div class="marquee">
                     <ul class="marquee-content-items">
-                        <li>微小酒全场包邮，快来选购！</li>
+                        <li>微小酒全场包邮，快来选购吧~</li>
                     </ul>
                 </div>
             </div>

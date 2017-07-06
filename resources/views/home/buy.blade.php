@@ -179,6 +179,10 @@
             background: #ffffff;
         }
 
+        .weui-number {
+            color: #6F599C;
+        }
+
         .weui-number-plus {
             margin-right: 0;
         }
@@ -187,6 +191,7 @@
             flex: none;
             -webkit-flex: none;
             color: gray;
+            font-size: .9em;
         }
 
         .detail-container {
@@ -208,7 +213,7 @@
         .cut {
             color: #ffffff;
             padding: 0 5px;
-            background: purple;
+            background: #6F599C;
         }
         .buy-1 {
             padding: 5px 5px 0 5px;
@@ -230,7 +235,7 @@
             line-height: 51px;
             padding: 0 12px;
             color: #ffffff;
-            background-color: #FF0033;
+            background-color: #6F599C;
         }
         .buy-2-1 {
             background: orange !important;
@@ -285,7 +290,7 @@
         </div>
         <div class="c2">
             <div>
-                <span>价格:</span>
+                <span>售价:</span>
                 <span class="price">￥{{ number_format($goods->price*$goods->attr->cut*0.1, 2, '.', '') }}</span>
                 @if ($goods->attr->cut == 10)
                     {{--<span class="price">￥{{ $goods->price }}</span>--}}
@@ -365,8 +370,8 @@
         {{--</div>--}}
         <a class="buy-1" href="/at/m"><img src="/images/icon-home.png"><p>进  店</p></a>
         <a class="buy-1" href="/at/m/basket"><img id="cart" src="/images/icon-cart.png"><p>购物车</p></a>
-        <a class="buy-2" href="javascript:;">立即购买</a>
-        <a class="buy-2 buy-2-1" href="javascript:;" onclick="addCart({{ $goods->id }})">加入购物车</a>
+        <a class="buy-2 wxj-btn" href="javascript:;">立即购买</a>
+        <a class="buy-2 buy-2-1 wxj-btn" href="javascript:;" onclick="addCart({{ $goods->id }})">加入购物车</a>
     </div>
     <!-- /container -->
     <script src="/js/buy/classie.js"></script>

@@ -36,7 +36,7 @@
 
         .weui_cells {
             margin-top: .5em;
-            border-top: 15px solid #FF0033;
+            border-top: 15px solid #6F599C;
             border-radius: 10px;
             box-shadow: 2px 2px 8px #ddd;
         }
@@ -52,12 +52,12 @@
         }
 
         .weui_cells_checkbox .weui_icon_checked:before {
-            color: #CC0033;
+            color: #6F599C;
             display: inline-block;
         }
 
         .weui_cells_checkbox .weui_check:checked + .weui_icon_checked:before {
-            color: #CC0033;
+            color: #6F599C;
         }
 
         .weui_cells:after, .weui_cells:before {
@@ -75,7 +75,7 @@
             right: 10px;
             border-left: 1px solid #eee;
             padding-left: 10px;
-            color: #FF0033;
+            color: #6F599C;
         }
 
         .fast-container-line {
@@ -142,9 +142,10 @@
             line-height: 25px;
             text-align: center;
             font-size: 18px;
-            color: #999;
+            color: #ffffff;
+            background: #6F599C;
             cursor: pointer;
-            border: 1px solid #e6e6e6;
+            border: 1px solid #6F599C;
         }
 
         .count a {
@@ -158,6 +159,7 @@
             color: #333;
             border-left: 0;
             border-right: 0;
+            background: #ffffff;
         }
 
         .weui-mask {
@@ -260,7 +262,7 @@
             height: 50px;
             right: 0;
             padding: 0 30px;
-            background: #FF0033;
+            background: #6F599C;
         }
         a {
             display: inline-block;
