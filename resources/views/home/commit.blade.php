@@ -219,28 +219,10 @@
             </div>
             <div style="flex: 3 0 0; margin-left: 5px;">
                 <p>{{ $item['name'] }}</p>
-                <p class="item-p">价格：<span style="color: orange">{{ number_format($item['price'], 2, '.', '')}}</span><span>数量：{{ $item['quantity'] }}</span></p>
+                <p class="item-p">价格：￥<span style="color: orange">{{ number_format($item['price'], 2, '.', '')}}</span><span>数量：{{ $item['quantity'] }}</span></p>
             </div>
         </div>
         @endforeach
-        {{--<div class="contents">--}}
-            {{--<div style="flex: 1 0 0">--}}
-                {{--<img src="/images/huoyanjiu.jpg">--}}
-            {{--</div>--}}
-            {{--<div style="flex: 3 0 0; margin-left: 5px;">--}}
-                {{--<p>黎明骑士2009干红葡萄酒红酒礼盒木盒装750ml*2</p>--}}
-                {{--<p>数量：99</p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="contents">--}}
-            {{--<div style="flex: 1 0 0">--}}
-                {{--<img src="/images/huoyanjiu.jpg">--}}
-            {{--</div>--}}
-            {{--<div style="flex: 3 0 0; margin-left: 5px;">--}}
-                {{--<p>黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄酒红酒礼盒木盒装750ml*2</p>--}}
-                {{--<p>数量：99</p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     </div>
 
     <div class="container">
@@ -283,7 +265,7 @@
         <div class="last-container">
             <p>优惠金额：￥20</p>
             <p>运费：包邮</p>
-            <p class="last-container-total"><span style="font-weight: bold">需付：</span><span style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
+            <p class="last-container-total"><span style="font-weight: bold">需付:</span><span style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
         </div>
     </div>
     <div class="container pay-btn-container">

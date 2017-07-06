@@ -46,7 +46,8 @@
         }
 
         .weui_check_label {
-            padding: 0 0 5px 0;
+            padding: 0;
+            margin-bottom: 5px;
             width: 60px;
         }
 

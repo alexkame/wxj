@@ -365,8 +365,8 @@
         {{--</div>--}}
         <a class="buy-1" href="/at/m"><img src="/images/icon-home.png"><p>进  店</p></a>
         <a class="buy-1" href="/at/m/basket"><img id="cart" src="/images/icon-cart.png"><p>购物车</p></a>
-        <a class="buy-2">立即购买</a>
-        <a class="buy-2 buy-2-1" onclick="addCart({{ $goods->id }})">加入购物车</a>
+        <a class="buy-2" href="javascript:;">立即购买</a>
+        <a class="buy-2 buy-2-1" href="javascript:;" onclick="addCart({{ $goods->id }})">加入购物车</a>
     </div>
     <!-- /container -->
     <script src="/js/buy/classie.js"></script>
