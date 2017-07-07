@@ -53,7 +53,7 @@ header {
     top: 0;
     left: 0;
     /*背景色渐变*/
-    background: linear-gradient(to bottom right, #6F599C, #B48BAA);
+    background: linear-gradient(to bottom right, #6F599C, #733C80);
 }
 
 header img {

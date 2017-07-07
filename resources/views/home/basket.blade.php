@@ -10,7 +10,13 @@
             background: url(/images/hbg.jpg);
             margin-bottom: 60px;
         }
-
+        a {
+            display: inline-block;
+        }
+        a:active {
+            color: #ffffff !important;
+            background: black !important;
+        }
         .toptips {
             display: none;
             position: fixed;
@@ -264,13 +270,6 @@
             padding: 0 30px;
             background: #6F599C;
         }
-        a {
-            display: inline-block;
-        }
-        a:active {
-            color: #ffffff;
-            background: black;
-        }
         #st {
             margin-top: 50px;
         }
@@ -345,12 +344,12 @@
                                 id="xiaoji_{{ $item['id'] }}">{{ number_format($item['price'] * $item['quantity'], 2, '.', '') }}</span>
                         <ul class="btn-numbox">
                             <ul class="count">
-                                <li onclick="sub({{ $item['id'] }})"><a><span id="num-jian"
-                                                                              class="num-jian">-</span></a></li>
+                                <li onclick="sub({{ $item['id'] }})"><a class="num-jian"><span id="num-jian"
+                                                                              >-</span></a></li>
                                 <li><input type="text" class="input-num" id="input-{{ $item['id'] }}"
                                            value="{{ $item['quantity'] }}" readonly/>
                                 </li>
-                                <li onclick="plus({{ $item['id'] }})"><a><span id="num-jia" class="num-jia">+</span></a>
+                                <li onclick="plus({{ $item['id'] }})"><a class="num-jia"><span id="num-jia" >+</span></a>
                                 </li>
                             </ul>
                         </ul>

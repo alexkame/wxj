@@ -20,4 +20,9 @@ class orderController extends Controller
         return view('home.commit')->with('items', $items)
             ->with('total', Number_format($total, 2, '.', ''));
     }
+
+    public function toOrders()
+    {
+        return view('home.orders');
+    }
 }

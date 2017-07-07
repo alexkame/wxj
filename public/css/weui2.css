@@ -7,9 +7,6 @@ body,html {
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-a:active {
-  color: #6F599C;
-}
 ::-webkit-input-placeholder {
   color: #CCCCCC; }
 /*基本样式*/

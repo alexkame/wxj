@@ -1,9 +1,6 @@
 @extends('home.base2')
 @section('title', "$goods->name")
 @section('css-link')
-    {{--<link rel="stylesheet" href="/css/weui.css"/>--}}
-    {{--<link rel="stylesheet" href="/css/weui2.css"/>--}}
-    {{--<link rel="stylesheet" href="/css/weui3.css"/>--}}
     <link rel="stylesheet" type="text/css" href="/css/buy/normalize.css"/>
     {{--<link rel="stylesheet" type="text/css" href="/css/buy/demo.css" />--}}
     <link rel="stylesheet" type="text/css" href="/css/buy/component.css"/>
@@ -21,8 +18,8 @@
         }
 
         a:active {
-            color: #ffffff;
-            background: black;
+            color: #ffffff !important;
+            background: black !important;
         }
 
         .toptips {
@@ -235,7 +232,7 @@
             line-height: 51px;
             padding: 0 12px;
             color: #ffffff;
-            background-color: #6F599C;
+            background: #6F599C;
         }
         .buy-2-1 {
             background: orange !important;

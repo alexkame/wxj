@@ -22,6 +22,9 @@ Route::group(['prefix' => 'at/m', 'namespace' => 'View\home'], function () {
     Route::get('/me', 'meController@toMe');
     Route::get('/goods/{id}', 'goodController@toGood');
     Route::get('/commit', 'orderController@toCommit');
+    Route::group(['prefix' => 'me'], function () {
+       Route::get('/orders', 'orderController@toOrders');
+    });
 });
 
 Route::group(['prefix' => 'service', 'namespace' => 'Services'], function () {
