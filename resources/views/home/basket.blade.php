@@ -42,9 +42,9 @@
 
         .weui_cells {
             margin-top: .5em;
-            border-top: 15px solid #6F599C;
-            border-radius: 10px;
-            box-shadow: 2px 2px 8px #ddd;
+            /*border-top: 5px dashed #6F599C;*/
+            /*border-radius: 10px;*/
+            box-shadow: 2px 2px 6px #eee;
         }
 
         .weui_cells:first-child {
@@ -204,7 +204,7 @@
 
         .weui-dialog__bd {
             padding: 0 1.6em 0.8em;
-            min-height: 40px;
+            /*min-height: 40px;*/
             font-size: 15px;
             line-height: 1.3;
             word-wrap: break-word;
@@ -239,11 +239,12 @@
         }
 
         .weui-dialog__btn_default {
+            border-right: 1px solid #EEEEEE;
             color: #353535;
         }
 
         .weui-dialog__btn_primary {
-            color: #0BB20C;
+            color: #6F599C;
         }
 
         .footer-container {
@@ -254,6 +255,7 @@
             background: #ffffff;
             line-height: 50px;
             height: 50px;
+            border-top: 1px solid #EEEEEE;
         }
 
         .footer-l, .footer-r {
@@ -298,7 +300,7 @@
         <div class="weui-dialog">
             <div class="weui-dialog__hd">
                 {{--<strong class="weui-dialog__title">提示</strong>--}}
-                <img src="/images/guidi.jpg">
+                <img style="width: 6em" src="/images/guidi.jpg">
             </div>
             <div class="weui-dialog__bd">您确定要删除吗?</div>
             <div class="weui-dialog__ft">

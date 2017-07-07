@@ -263,13 +263,13 @@
     </div>
     <div class="container">
         <div class="last-container">
-            <p>优惠金额：￥20</p>
+            <p>优惠金额：￥<span id="card_value">20</span></p>
             <p>运费：包邮</p>
-            <p class="last-container-total"><span style="font-weight: bold">需付:</span><span style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
+            <p class="last-container-total"><span style="font-weight: bold">需付:</span><span id="total_price" style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
         </div>
     </div>
     <div class="container pay-btn-container">
-        <a href="javascript:;" class="weui_btn weui_btn_primary">微信支付</a>
+        <a href="javascript:;" class="weui_btn weui_btn_primary" onclick="wechatPay()">微信支付</a>
     </div>
     <div id="mask">
         <div id="youhuiquan-show-container">
@@ -277,7 +277,7 @@
             <div class="weui_cells weui_cells_checkbox">
                 <label class="weui_cell weui_check_label" for="s11">
                     <div class="weui_cell_hd">
-                        <input type="radio" class="weui_check" name="checkbox1" id="s11" checked="checked">
+                        <input type="checkbox" class="weui_check" name="checkbox1" value="20" id="s11">
                         <i class="weui_icon_checked"></i>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
@@ -286,7 +286,7 @@
                 </label>
                 <label class="weui_cell weui_check_label" for="s12">
                     <div class="weui_cell_hd">
-                        <input type="radio" name="checkbox1" class="weui_check" id="s12">
+                        <input type="checkbox" name="checkbox1" value="50" class="weui_check" id="s12">
                         <i class="weui_icon_checked"></i>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
@@ -296,8 +296,8 @@
             </div>
         </div>
         <div id="benefit-select-container">
-            <a class="select-btn" onclick="canselSelectMask()">取消</a>
-            <a class="select-btn">确定使用</a>
+            <a class="select-btn" onclick="canselUseCard()">取消</a>
+            <a class="select-btn" onclick="commitUseCard()">确定使用</a>
         </div>
     </div>
     @endsection
@@ -307,8 +307,38 @@
         function selectBenefitCard() {
             $("#mask").show();
         }
-        function canselSelectMask() {
+        function canselUseCard() {
+            $(":checkbox").prop("checked", false);
             $("#mask").hide();
+        }
+        function commitUseCard() {
+            var cart_num = $("input[name='checkbox1']:checked").length;
+            if (cart_num >= 2) {
+                alert("只能选中一中优惠券呢");
+            }
+            if (cart_num == 1) {
+                var card_value = parseFloat($("#card_value").html());
+                var used_card_price = parseFloat($("#total_price").html()) - card_value;
+                $("#total_price").html(used_card_price);
+                $("#mask").hide();
+            }
+
+        }
+
+        function wechatPay() {
+            var card_id = $("input[name=checkbox1]:checked").val();
+            console.log(card_id);
+            {{--$.ajax({--}}
+                {{--url: '/service/wechat/pay',--}}
+                {{--type: 'post',--}}
+                {{--data: {ids: "{{ $items }}}", card_id:   },--}}
+                {{--success: function() {--}}
+
+                {{--},--}}
+                {{--error: function() {--}}
+
+                {{--}--}}
+            {{--});--}}
         }
     </script>
     @endsection

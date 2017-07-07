@@ -19,9 +19,13 @@
             position: fixed;
             top: 0;
             z-index: 999;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
         }
 
         .weui_tab_nav {
+            padding-top: 10px;
             width: 90%;
             margin: 0 auto;
         }
@@ -50,14 +54,8 @@
             background: #6F599C !important;
         }
 
-        .tab-active {
-            color: #ffffff !important;
-            background: black !important;
-        }
-
         .order-container {
-            margin-top: 40px;
-            border-top: 1px solid #dddddd;
+            margin-top: 60px;
         }
 
         .dropload-down, .dropload-up {
@@ -65,15 +63,30 @@
             background: #ffffff !important;
             border-bottom: none !important;
         }
+        .weui_panel:after, .weui_panel:before {
+            content: none;
+        }
+        .weui_media_box {
+            padding: 10px;
+        }
+        .title-bar {
+            border-bottom: 1px solid #dddddd;
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        .title-name {
+
+        }
     </style>
 @endsection
 @section('content')
-    <div class="weui_tab" style="height:44px;" id="tab6">
+    <div class="weui_tab" style="height:60px;" id="tab6">
         <div class="weui_tab_nav">
-            <a href="javascript:" class="weui_navbar_item weui_nav_red active"> 全部订单(10) </a>
+            <a href="javascript:" class="weui_navbar_item weui_nav_red active"> 全部(10) </a>
             <a href="javascript:" class="weui_navbar_item weui_nav_red"> 待付款(2) </a>
             <a href="javascript:" class="weui_navbar_item weui_nav_red"> 待发货(6) </a>
-            <a href="javascript:" class="weui_navbar_item weui_nav_red"> 签收完成(2) </a>
+            <a href="javascript:" class="weui_navbar_item weui_nav_red"> 签收(2) </a>
         </div>
     </div>
     <div class="order-container">

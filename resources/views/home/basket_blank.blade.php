@@ -21,7 +21,9 @@
         }
         .blank img {
             opacity: .5;
-            width: 100%;
+            width: 6em;
+            display: block;
+            margin: 0 auto;
         }
         .button_sp_area {
             width: 100%;
