@@ -18,7 +18,7 @@ class orderController extends Controller
             $total += Cart::get($ids[$i])->getPriceSum();
         }
         return view('home.commit')->with('items', $items)
-            ->with('total', Number_format($total, 2, '.', ''));
+            ->with('total', $total);
     }
 
     public function toOrders()

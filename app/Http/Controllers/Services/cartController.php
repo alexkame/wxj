@@ -27,7 +27,6 @@ class cartController extends Controller
         $goods = Goods::find($_GET['id']);
         Cart::update($goods->id, array('quantity' => -1));
         $push->status = 0;
-        $push->message = "添加成功~我在购物车约定你咯";
         return $push->toJson();
     }
 

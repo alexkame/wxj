@@ -31,4 +31,5 @@ Route::group(['prefix' => 'service', 'namespace' => 'Services'], function () {
     Route::get('/cart/add', 'cartController@add');
     Route::get('/cart/inc', 'cartController@inc');
     Route::get('/cart/remove', 'cartController@remove');
+    Route::post('/wechat/pay', 'wechatPayController@getPayConfig');
 });

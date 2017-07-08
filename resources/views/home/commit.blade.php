@@ -36,6 +36,7 @@
     .show-title {
         padding: 10px 10px 10px 0;
         /*font-weight: bold;*/
+        color: black;
         font-size: 15px;
         background: #ffffff;
     }
@@ -195,6 +196,9 @@
     .item-p span {
         padding-right: 10px;
     }
+    .weui_cells_checkbox .weui_check:checked+.weui_icon_checked:before {
+        color: #6F599C;
+    }
 </style>
     @endsection
 @section('content')
@@ -224,7 +228,7 @@
         </div>
         @endforeach
     </div>
-
+    <input id="origin_price" value="{{ Number_format($total, 2, '.', '') }}" hidden>
     <div class="container">
         <p class="show-title"><img src="/images/icon-dingwei.png">
             收货信息
@@ -235,11 +239,11 @@
         <img src="/images/dizhibg.png">
         <div class="dizhi-container">
             <p>
-                <spna>收货人：晨晨晨</spna>
-                <span>联系电话：15622965560</span>
+                <spna>收货人：<span id="receipt_name">晨晨晨</span></spna>
+                <span>联系电话：<span id="phone">15622965560</span></span>
             </p>
-            <p>城市：</p>
-            <p>详细地址：黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄干红干红酒红酒礼盒木盒装750ml</p>
+            <p>城市：<span id="city">天门</span></p>
+            <p>详细地址：<span id="location">黎明骑士2009珍酿原酒进口红酒男爵古堡干红葡萄干红干红酒红酒礼盒木盒装750ml</span></p>
         </div>
     </div>
     <div class="container container-line">
@@ -265,7 +269,7 @@
         <div class="last-container">
             <p>优惠金额：￥<span id="card_value">20</span></p>
             <p>运费：包邮</p>
-            <p class="last-container-total"><span style="font-weight: bold">需付:</span><span id="total_price" style="font-size: 1.5em;color: orange">￥{{ $total }}</span></p>
+            <p class="last-container-total"><span>需付:</span><span style="font-size: 1.5em;">￥<span id="final_price">{{ Number_format($total, 2, '.', '') }}</span></span></p>
         </div>
     </div>
     <div class="container pay-btn-container">
@@ -297,7 +301,7 @@
         </div>
         <div id="benefit-select-container">
             <a class="select-btn" onclick="canselUseCard()">取消</a>
-            <a class="select-btn" onclick="commitUseCard()">确定使用</a>
+            <a class="select-btn" onclick="commitUseCard()">确定</a>
         </div>
     </div>
     @endsection
@@ -312,33 +316,65 @@
             $("#mask").hide();
         }
         function commitUseCard() {
-            var cart_num = $("input[name='checkbox1']:checked").length;
-            if (cart_num >= 2) {
+            var carts = $("input[name='checkbox1']:checked").length;
+            if (carts >= 2) {
                 alert("只能选中一中优惠券呢");
             }
-            if (cart_num == 1) {
-                var card_value = parseFloat($("#card_value").html());
-                var used_card_price = parseFloat($("#total_price").html()) - card_value;
-                $("#total_price").html(used_card_price);
+            if (carts == 0) {
+                $("#final_price").html($("#origin_price").val());
+                $("#mask").hide();
+            }
+            if (carts == 1) {
+                var card_value = parseFloat($("input[name='checkbox1']:checked").val());
+                var used_card_price = parseFloat($("#origin_price").val()) - card_value;
+                $("#final_price").html(returnFloat(used_card_price));
                 $("#mask").hide();
             }
 
         }
 
+        function returnFloat(value) {
+            var value = Math.round(parseFloat(value) * 100) / 100;
+            var xsd = value.toString().split(".");
+            if (xsd.length == 1) {
+                value = value.toString() + ".00";
+                return value;
+            }
+            if (xsd.length > 1) {
+                if (xsd[1].length < 2) {
+                    value = value.toString() + "0";
+                }
+                return value;
+            }
+        }
+
         function wechatPay() {
-            var card_id = $("input[name=checkbox1]:checked").val();
-            console.log(card_id);
-            {{--$.ajax({--}}
-                {{--url: '/service/wechat/pay',--}}
-                {{--type: 'post',--}}
-                {{--data: {ids: "{{ $items }}}", card_id:   },--}}
-                {{--success: function() {--}}
+            var card_id = $("input[name=checkbox1]:checked").attr("id");
+            var final_price = $("#final_price").html();
+            var receipt_name = $("#receipt_name").html();
+            var phone = $("#phone").html();
+            var city = $("#city").html();
+            var location = $("#location").html();
+            $.ajax({
+                url: '/service/wechat/pay',
+                type: 'post',
+                data: {
+                    {{--ids: "{{ $items }}",--}}
+                    card_id: card_id == null? 1 : card_id,
+                    final_price: final_price,
+                    receipt_name: receipt_name,
+                    phone: phone,
+                    city: city,
+                    location: location,
+                    _token : "{{ csrf_token()  }}"
+                },
+                success: function () {
 
-                {{--},--}}
-                {{--error: function() {--}}
+                },
+                error: function () {
 
-                {{--}--}}
-            {{--});--}}
+                }
+            });
         }
     </script>
     @endsection
